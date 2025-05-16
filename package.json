@@ -1,0 +1,48 @@
+{
+  "name": "langchain-ts",
+  "version": "1.0.0",
+  "description": "LangChain TypeScript project",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "jest",
+    "agent:dev": "ts-node src/langchain-react-agent.ts",
+    "plan-execute-agent:dev": "ts-node src/langchain-plan-excute-agent.ts",
+    "langgraph-agent:dev": "ts-node src/langgraph-use-create-react-agent.ts",
+    "langgraph-self-agent:dev": "ts-node src/langgraph-self-agent.ts",
+    "book-to-video": "ts-node src/index.ts /Users/jiang/Documents/ai/langchain-ts/assets/原则2.epub"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@huggingface/inference": "^2.8.1",
+    "@langchain/community": "^0.3.41",
+    "@langchain/core": "^0.3.45",
+    "@langchain/deepseek": "^0.0.1",
+    "@langchain/langgraph": "^0.2.67",
+    "@langchain/mcp-adapters": "^0.4.2",
+    "@langchain/ollama": "^0.2.0",
+    "@langchain/openai": "^0.5.6",
+    "@modelcontextprotocol/server-filesystem": "^2025.3.28",
+    "chromadb": "^2.2.1",
+    "dotenv": "^16.4.5",
+    "epub2": "^3.0.2",
+    "html-to-text": "^9.0.5",
+    "langchain": "^0.3.23",
+    "langsmith": "^0.3.20",
+    "lodash": "^4.17.21",
+    "openai": "^4.95.1",
+    "pdf-parse": "^1.1.1",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.17.12",
+    "@types/node": "^20.11.24",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
