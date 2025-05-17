@@ -66,7 +66,7 @@ export class DocumentStoreManager {
 
       // 如果文档没有ID，创建一个
       if (!document.id) {
-        document.id = uuidv4();
+        document.id = document.title;
       }
 
       // 更新文档元数据

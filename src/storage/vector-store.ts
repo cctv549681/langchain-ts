@@ -1,5 +1,5 @@
 import { Chroma } from "@langchain/community/vectorstores/chroma";
-import { OpenAIEmbeddings } from "@langchain/openai";
+import { OllamaEmbeddings } from "@langchain/ollama";
 import { Document as LangchainDocument } from "@langchain/core/documents";
 import { getSettings, getChromaConfig } from "../config/settings";
 import { ensureDirectoryExists } from "../utils/file-operations";
@@ -46,7 +46,10 @@ export class VectorStoreManager {
       ensureDirectoryExists(directory);
       
       // 初始化嵌入模型和向量存储
-      const embeddings = new OpenAIEmbeddings();
+      const embeddings = new OllamaEmbeddings({
+        model: "bge-m3:latest",
+        baseUrl: "http://localhost:11434",
+      });
       
       let chromaSettings;
       try {

@@ -7,14 +7,14 @@ import { getSettings } from '../config/settings';
 // 导入功能模块
 import { richChapters } from '../modules/document-processor/chapter-splitter';
 import { analyzeStructure } from '../modules/content-analyzer/structure-analyzer';
-import { DirectorAgent } from '../agents/director';
+import { plannerAgent } from '../agents/planner';
 import { createEpisodeWorkflow } from './episode-workflow';
 
 /**
  * 创建主工作流
  * @returns 编译后的工作流
  */
-export function createMainWorkflow() {
+export function createMainWorkflow(document: Document) {
   // 定义状态类型
   type WorkflowState = {
     document: Document;
@@ -93,20 +93,24 @@ export function createMainWorkflow() {
     }
   }
 
-  // 总导演规划节点
+  // 总策划规划节点
   async function directorPlanNode(state: WorkflowState, config?: RunnableConfig): Promise<Partial<WorkflowState>> {
     try {
       if (!state.chapterAnalyses) {
         throw new Error('缺少章节分析结果');
       }
 
-      console.log('执行总导演规划...');
+      console.log('执行总策划规划...');
       
-      // 使用总导演Agent来规划剧集
-      const episodePlans = await DirectorAgent.tools.planEpisodes(state.chapterAnalyses);
+      // 使用总策划Agent来规划剧集
+      const episodePlans = await plannerAgent.tools.planEpisodes({
+        contentAnalysis: state.chapterAnalyses
+      });
       
       // 定义风格
-      const style = await DirectorAgent.tools.defineStyle(state.chapterAnalyses);
+      const style = await plannerAgent.tools.defineStyle({
+        contentAnalysis: state.chapterAnalyses
+      });
       
       return { 
         episodePlans,
@@ -114,9 +118,9 @@ export function createMainWorkflow() {
         status: 'processing'
       };
     } catch (error: any) {
-      console.error('总导演规划失败:', error);
+      console.error('总策划规划失败:', error);
       return { 
-        error: `总导演规划失败: ${error.message}`,
+        error: `总策划规划失败: ${error.message}`,
         status: 'failed'
       };
     }

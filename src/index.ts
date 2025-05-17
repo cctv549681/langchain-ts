@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 // import { getSettings, updateSettings } from './config/settings';
 import { DEFAULT_OUTPUT_DIR } from './config/constants';
 // import { Document, DocumentMetadata } from './types/document';
-// import { createMainWorkflow } from './workflows/main-workflow';
+import { createMainWorkflow } from './workflows/main-workflow';
 import { parseDocument } from './modules/document-processor/pdf-parser';
 // import { generateOutputFiles } from './utils/file-operations';
 // import { ensureDirectoryExists } from './utils/file-operations';
@@ -58,19 +58,19 @@ async function main() {
     const dataStore = DataStore.getInstance();
     await dataStore.initialize();
     
-    console.log(`使用输入文件: ${inputFilePath}`);
-    console.log(`输出目录: ${outputDir}`);
+    // console.log(`使用输入文件: ${inputFilePath}`);
+    // console.log(`输出目录: ${outputDir}`);
     
     // 解析PDF
     console.log('正在解析PDF文件...');
     const document = await parseDocument(inputFilePath);
     
     // 保存文档到存储系统
-    const documentId = await dataStore.storeDocument(document);
-    console.log(`文档已保存到存储系统，ID: ${documentId}`);
+    // const documentId = await dataStore.storeDocument(document);
+    // console.log(`文档已保存到存储系统，ID: ${documentId}`);
     
     // 创建工作流
-    // const workflow = createMainWorkflow();
+    const workflow = createMainWorkflow(document);
     
     // 执行工作流
     console.log('开始处理文档...');

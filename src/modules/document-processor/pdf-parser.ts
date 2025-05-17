@@ -1,6 +1,4 @@
 import { Chapter, Document, DocumentMetadata } from "../../types/document";
-import { v4 as uuidv4 } from "uuid";
-import * as fs from "fs";
 import * as path from "path";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { EPubLoader } from "@langchain/community/document_loaders/fs/epub";
@@ -37,7 +35,7 @@ export async function parseDocument(filePath: string): Promise<Document> {
     // 创建并返回文档对象
     // 注意：实际实现需要处理章节分割等逻辑
     return {
-      id: uuidv4(),
+      id: path.basename(filePath, path.extname(filePath)),
       title: path.basename(filePath, path.extname(filePath)),
       metadata,
       chapters: doc.filter((chapter) => chapter.pageContent.length > 0).map((chapter, index) => ({

@@ -59,6 +59,9 @@ dependencies:
   pdf-parse:
     specifier: ^1.1.1
     version: 1.1.1
+  uuid:
+    specifier: ^11.1.0
+    version: 11.1.0
   zod:
     specifier: ^3.24.3
     version: 3.24.3
@@ -97,7 +100,7 @@ packages:
     dev: true
 
   /@anthropic-ai/sdk@0.27.3:
-    resolution: {integrity: sha1-WSzdhzyF/6uVia5vLiUMvxUOFHU=, tarball: http://registry.npm.qima-inc.com/@anthropic-ai/sdk/download/@anthropic-ai/sdk-0.27.3.tgz}
+    resolution: {integrity: sha512-IjLt0gd3L4jlOfilxVXTifn42FnVffMgDC04RJK1KDZpmkBWLv0XC92MVVmkxrFZNS/7l3xWgP/I3nqtX1sQHw==}
     dependencies:
       '@types/node': 18.19.86
       '@types/node-fetch': 2.6.12
@@ -974,7 +977,7 @@ packages:
     dev: true
 
   /@browserbasehq/sdk@2.5.0:
-    resolution: {integrity: sha512-bcnbYZvm5Ht1nrHUfWDK4crspiTy1ESJYMApsMiOTUnlKOan0ocRD6m7hZH34iSC2c2XWsoryR80cwsYgCBWzQ==, tarball: https://registry.npmjs.org/@browserbasehq/sdk/-/sdk-2.5.0.tgz}
+    resolution: {integrity: sha512-bcnbYZvm5Ht1nrHUfWDK4crspiTy1ESJYMApsMiOTUnlKOan0ocRD6m7hZH34iSC2c2XWsoryR80cwsYgCBWzQ==}
     dependencies:
       '@types/node': 18.19.86
       '@types/node-fetch': 2.6.12
@@ -988,7 +991,7 @@ packages:
     dev: false
 
   /@browserbasehq/stagehand@1.14.0(@playwright/test@1.45.1)(deepmerge@4.3.1)(dotenv@16.5.0)(openai@4.95.1)(zod@3.24.3):
-    resolution: {integrity: sha512-Hi/EzgMFWz+FKyepxHTrqfTPjpsuBS4zRy3e9sbMpBgLPv+9c0R+YZEvS7Bw4mTS66QtvvURRT6zgDGFotthVQ==, tarball: https://registry.npmjs.org/@browserbasehq/stagehand/-/stagehand-1.14.0.tgz}
+    resolution: {integrity: sha512-Hi/EzgMFWz+FKyepxHTrqfTPjpsuBS4zRy3e9sbMpBgLPv+9c0R+YZEvS7Bw4mTS66QtvvURRT6zgDGFotthVQ==}
     peerDependencies:
       '@playwright/test': ^1.42.1
       deepmerge: ^4.3.1
@@ -1049,7 +1052,7 @@ packages:
     dev: false
 
   /@ibm-cloud/watsonx-ai@1.6.4(@langchain/core@0.3.45):
-    resolution: {integrity: sha512-u0fmXagywjLAd3apZTV6kRQAHjWl3bNKv5422mQJsM/MZB5YPjx28tjEbpoORh15RuWjYyO/wHZACRWBBkNhbQ==, tarball: https://registry.npmjs.org/@ibm-cloud/watsonx-ai/-/watsonx-ai-1.6.4.tgz}
+    resolution: {integrity: sha512-u0fmXagywjLAd3apZTV6kRQAHjWl3bNKv5422mQJsM/MZB5YPjx28tjEbpoORh15RuWjYyO/wHZACRWBBkNhbQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@langchain/textsplitters': 0.1.0(@langchain/core@0.3.45)
@@ -1955,14 +1958,14 @@ packages:
     dev: false
 
   /@pkgjs/parseargs@0.11.0:
-    resolution: {integrity: sha1-p36nQvqyV3UUVDTrHSMoz1ATrDM=, tarball: http://registry.npm.qima-inc.com/@pkgjs/parseargs/download/@pkgjs/parseargs-0.11.0.tgz}
+    resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
     requiresBuild: true
     dev: false
     optional: true
 
   /@playwright/test@1.45.1:
-    resolution: {integrity: sha1-gZuQ+kPRcAD85evRJwQ/1mGTi3o=, tarball: http://registry.npm.qima-inc.com/@playwright/test/download/@playwright/test-1.45.1.tgz}
+    resolution: {integrity: sha512-Wo1bWTzQvGA7LyKGIZc8nFSTFf2TkthGIFBR+QVNilvwouGzFd4PYukZe3rvf5PSqjHi1+1NyKSDZKcQWETzaA==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -2520,7 +2523,7 @@ packages:
     dev: false
 
   /@tokenizer/token@0.3.0:
-    resolution: {integrity: sha1-/pipP+eJJH6ZjHXnTpx8YyF6onY=, tarball: http://registry.npm.qima-inc.com/@tokenizer/token/download/@tokenizer/token-0.3.0.tgz}
+    resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
     dev: false
 
   /@tsconfig/node10@1.0.11:
@@ -2569,7 +2572,7 @@ packages:
     dev: true
 
   /@types/debug@4.1.12:
-    resolution: {integrity: sha1-oVXyFpCHGVNBDfS2tvUxh/BQCRc=, tarball: http://registry.npm.qima-inc.com/@types/debug/download/@types/debug-4.1.12.tgz}
+    resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
     dependencies:
       '@types/ms': 2.1.0
     dev: false
@@ -2616,7 +2619,7 @@ packages:
     dev: false
 
   /@types/ms@2.1.0:
-    resolution: {integrity: sha1-BSqmekjszEMJ1/AZG35BQ0uQu3g=, tarball: http://registry.npm.qima-inc.com/@types/ms/download/@types/ms-2.1.0.tgz}
+    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
     dev: false
 
   /@types/node-fetch@2.6.12:
@@ -2646,7 +2649,7 @@ packages:
     dev: true
 
   /@types/tough-cookie@4.0.5:
-    resolution: {integrity: sha1-y24qaRtwyxd8bjrpwdLosuqM0wQ=, tarball: http://registry.npm.qima-inc.com/@types/tough-cookie/download/@types/tough-cookie-4.0.5.tgz}
+    resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
     dev: false
 
   /@types/uuid@10.0.0:
@@ -2675,6 +2678,8 @@ packages:
       sharp: 0.32.6
     optionalDependencies:
       onnxruntime-node: 1.14.0
+    transitivePeerDependencies:
+      - bare-buffer
     dev: false
 
   /abort-controller@3.0.0:
@@ -2786,7 +2791,7 @@ packages:
     dev: false
 
   /axios@1.8.4(debug@4.4.0):
-    resolution: {integrity: sha1-eJkLtLxj0srgcpUtN0g1lQqC9Ec=, tarball: http://registry.npm.qima-inc.com/axios/download/axios-1.8.4.tgz}
+    resolution: {integrity: sha512-eBSYY4Y68NNlHbHBMdeDmKNtDgXWhQsJcGqzO3iLUM0GraQFSS9cVgPX5I9b3lbdFKyYoAEGAZF1DwhTaljNAw==}
     dependencies:
       follow-redirects: 1.15.9(debug@4.4.0)
       form-data: 4.0.2
@@ -2877,12 +2882,6 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  /bare-events@2.5.0:
-    resolution: {integrity: sha1-MFtRHiYv/YudVhawVkZPjhszKcw=, tarball: http://registry.npm.qima-inc.com/bare-events/download/bare-events-2.5.0.tgz}
-    requiresBuild: true
-    dev: false
-    optional: true
-
   /bare-events@2.5.4:
     resolution: {integrity: sha512-+gFfDkR8pj4/TrWCGUGWmJIkBwuxPS5F+a5yWjOHQt2hHvNZd5YLzadjmDUtFmMM4y429bnKLa8bYBMHcYdnQA==}
     requiresBuild: true
@@ -2913,7 +2912,7 @@ packages:
     optional: true
 
   /bare-path@3.0.0:
-    resolution: {integrity: sha1-tZ0YEwulKmr5J22z6WouPT6lIXg=, tarball: http://registry.npm.qima-inc.com/bare-path/download/bare-path-3.0.0.tgz}
+    resolution: {integrity: sha512-tyfW2cQcB5NN8Saijrhqn0Zh7AnFNsnczRcuWODH0eYAXBsJ5gVxAUuNr7tsHSC6IZ77cA0SitzT+s47kot8Mw==}
     requiresBuild: true
     dependencies:
       bare-os: 3.6.1
@@ -3023,7 +3022,7 @@ packages:
     dev: true
 
   /buffer-equal-constant-time@1.0.1:
-    resolution: {integrity: sha1-+OcRMvf/5uAaXJaXpMbz5I1cyBk=, tarball: http://registry.npm.qima-inc.com/buffer-equal-constant-time/download/buffer-equal-constant-time-1.0.1.tgz}
+    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
     dev: false
 
   /buffer-from@1.1.2:
@@ -3107,6 +3106,8 @@ packages:
       sharp: 0.32.6
     optionalDependencies:
       onnxruntime-node: 1.14.0
+    transitivePeerDependencies:
+      - bare-buffer
     dev: false
 
   /chromadb@2.2.1(zod@3.24.3):
@@ -3126,6 +3127,7 @@ packages:
       voyageai: 0.0.3
     transitivePeerDependencies:
       - aws-crt
+      - bare-buffer
       - encoding
       - ws
       - zod
@@ -3440,7 +3442,7 @@ packages:
     dev: false
 
   /ecdsa-sig-formatter@1.0.11:
-    resolution: {integrity: sha1-rg8PothQRe8UqBfao86azQSJ5b8=, tarball: http://registry.npm.qima-inc.com/ecdsa-sig-formatter/download/ecdsa-sig-formatter-1.0.11.tgz}
+    resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
     dependencies:
       safe-buffer: 5.2.1
     dev: false
@@ -3671,11 +3673,11 @@ packages:
     dev: false
 
   /extend@3.0.2:
-    resolution: {integrity: sha1-+LETa0Bx+9jrFAr/hYsQGewpFfo=, tarball: http://registry.npm.qima-inc.com/extend/download/extend-3.0.2.tgz}
+    resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
     dev: false
 
   /extended-eventsource@1.7.0:
-    resolution: {integrity: sha512-s8rtvZuYcKBpzytHb5g95cHbZ1J99WeMnV18oKc5wKoxkHzlzpPc/bNAm7Da2Db0BDw0CAu1z3LpH+7UsyzIpw==, tarball: https://registry.npmjs.org/extended-eventsource/-/extended-eventsource-1.7.0.tgz}
+    resolution: {integrity: sha512-s8rtvZuYcKBpzytHb5g95cHbZ1J99WeMnV18oKc5wKoxkHzlzpPc/bNAm7Da2Db0BDw0CAu1z3LpH+7UsyzIpw==}
     requiresBuild: true
     dev: false
     optional: true
@@ -3702,7 +3704,7 @@ packages:
     dev: true
 
   /file-type@16.5.4:
-    resolution: {integrity: sha1-R0+09wS+5CdoH5jdOQBYoXKmwv0=, tarball: http://registry.npm.qima-inc.com/file-type/download/file-type-16.5.4.tgz}
+    resolution: {integrity: sha512-/yFHK0aGjFEgDJjEKP0pWCplsPFPhwyfwevf/pVxiN0tmE4L9LmwWxWukdJSHdoCli4VgQLehjJtwQBnqmsKcw==}
     engines: {node: '>=10'}
     dependencies:
       readable-web-to-node-stream: 3.0.2
@@ -3755,7 +3757,7 @@ packages:
     dev: false
 
   /follow-redirects@1.15.9(debug@4.4.0):
-    resolution: {integrity: sha1-pgT6EORDv5jKlCKNnuvMLoosjuE=, tarball: http://registry.npm.qima-inc.com/follow-redirects/download/follow-redirects-1.15.9.tgz}
+    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -3784,7 +3786,7 @@ packages:
     dev: false
 
   /form-data@4.0.0:
-    resolution: {integrity: sha1-k5Gdrq82HuUpWEubMWZNwSyfpFI=, tarball: http://registry.npm.qima-inc.com/form-data/download/form-data-4.0.0.tgz}
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
     engines: {node: '>= 6'}
     dependencies:
       asynckit: 0.4.0
@@ -3834,7 +3836,7 @@ packages:
     dev: true
 
   /fsevents@2.3.2:
-    resolution: {integrity: sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=, tarball: http://registry.npm.qima-inc.com/fsevents/download/fsevents-2.3.2.tgz}
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -3842,7 +3844,7 @@ packages:
     optional: true
 
   /fsevents@2.3.3:
-    resolution: {integrity: sha1-ysZAd4XQNnWipeGlMFxpezR9kNY=, tarball: http://registry.npm.qima-inc.com/fsevents/download/fsevents-2.3.3.tgz}
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -4011,7 +4013,7 @@ packages:
     dev: false
 
   /ibm-cloud-sdk-core@5.3.2:
-    resolution: {integrity: sha512-YhtS+7hGNO61h/4jNShHxbbuJ1TnDqiFKQzfEaqePnonOvv8NnxWxOk92FlKKCCzZNOT34Gnd7WCLVJTntwEFQ==, tarball: https://registry.npmjs.org/ibm-cloud-sdk-core/-/ibm-cloud-sdk-core-5.3.2.tgz}
+    resolution: {integrity: sha512-YhtS+7hGNO61h/4jNShHxbbuJ1TnDqiFKQzfEaqePnonOvv8NnxWxOk92FlKKCCzZNOT34Gnd7WCLVJTntwEFQ==}
     engines: {node: '>=18'}
     dependencies:
       '@types/debug': 4.1.12
@@ -4129,7 +4131,7 @@ packages:
     dev: false
 
   /isstream@0.1.2:
-    resolution: {integrity: sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=, tarball: http://registry.npm.qima-inc.com/isstream/download/isstream-0.1.2.tgz}
+    resolution: {integrity: sha512-Yljz7ffyPbrLpLngrMtZ7NduUgVvi6wG9RJ9IUcyCd59YQ911PBJphODUcbOVbqYfxe1wuYf/LJ8PauMRwsM/g==}
     dev: false
 
   /istanbul-lib-coverage@3.2.2:
@@ -4672,7 +4674,7 @@ packages:
     dev: false
 
   /jsonwebtoken@9.0.2:
-    resolution: {integrity: sha1-Zf+R9KvvF4RpfUCVK7GZjFBMqvM=, tarball: http://registry.npm.qima-inc.com/jsonwebtoken/download/jsonwebtoken-9.0.2.tgz}
+    resolution: {integrity: sha512-PRp66vJ865SSqOlgqS8hujT5U4AOgMfhrwYIuIhfKaoSCZcirrmASQr8CX7cUg+RMih+hgznrjp99o+W4pJLHQ==}
     engines: {node: '>=12', npm: '>=6'}
     dependencies:
       jws: 3.2.2
@@ -4688,7 +4690,7 @@ packages:
     dev: false
 
   /jwa@1.4.1:
-    resolution: {integrity: sha1-dDwymFy56YZVUw1TZBtmyGRbA5o=, tarball: http://registry.npm.qima-inc.com/jwa/download/jwa-1.4.1.tgz}
+    resolution: {integrity: sha512-qiLX/xhEEFKUAJ6FiBMbes3w9ATzyk5W7Hvzpa/SLYdxNtng+gcurvrI7TbACjIXlsJyr05/S1oUhZrc63evQA==}
     dependencies:
       buffer-equal-constant-time: 1.0.1
       ecdsa-sig-formatter: 1.0.11
@@ -4696,7 +4698,7 @@ packages:
     dev: false
 
   /jws@3.2.2:
-    resolution: {integrity: sha1-ABCZ82OUaMlBQADpmZX6UvtHgwQ=, tarball: http://registry.npm.qima-inc.com/jws/download/jws-3.2.2.tgz}
+    resolution: {integrity: sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==}
     dependencies:
       jwa: 1.4.1
       safe-buffer: 5.2.1
@@ -4830,27 +4832,27 @@ packages:
     dev: false
 
   /lodash.includes@4.3.0:
-    resolution: {integrity: sha1-YLuYqHy5I8aMoeUTJUgzFISfVT8=, tarball: http://registry.npm.qima-inc.com/lodash.includes/download/lodash.includes-4.3.0.tgz}
+    resolution: {integrity: sha512-W3Bx6mdkRTGtlJISOvVD/lbqjTlPPUDTMnlXZFnVwi9NKJ6tiAk6LVdlhZMm17VZisqhKcgzpO5Wz91PCt5b0w==}
     dev: false
 
   /lodash.isboolean@3.0.3:
-    resolution: {integrity: sha1-bC4XHbKiV82WgC/UOwGyDV9YcPY=, tarball: http://registry.npm.qima-inc.com/lodash.isboolean/download/lodash.isboolean-3.0.3.tgz}
+    resolution: {integrity: sha512-Bz5mupy2SVbPHURB98VAcw+aHh4vRV5IPNhILUCsOzRmsTmSQ17jIuqopAentWoehktxGd9e/hbIXq980/1QJg==}
     dev: false
 
   /lodash.isinteger@4.0.4:
-    resolution: {integrity: sha1-YZwK89A/iwTDH1iChAt3sRzWg0M=, tarball: http://registry.npm.qima-inc.com/lodash.isinteger/download/lodash.isinteger-4.0.4.tgz}
+    resolution: {integrity: sha512-DBwtEWN2caHQ9/imiNeEA5ys1JoRtRfY3d7V9wkqtbycnAmTvRRmbHKDV4a0EYc678/dia0jrte4tjYwVBaZUA==}
     dev: false
 
   /lodash.isnumber@3.0.3:
-    resolution: {integrity: sha1-POdoEMWSjQM1IwGsKHMX8RwLH/w=, tarball: http://registry.npm.qima-inc.com/lodash.isnumber/download/lodash.isnumber-3.0.3.tgz}
+    resolution: {integrity: sha512-QYqzpfwO3/CWf3XP+Z+tkQsfaLL/EnUlXWVkIk5FUPc4sBdTehEqZONuyRt2P67PXAk+NXmTBcc97zw9t1FQrw==}
     dev: false
 
   /lodash.isplainobject@4.0.6:
-    resolution: {integrity: sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=, tarball: http://registry.npm.qima-inc.com/lodash.isplainobject/download/lodash.isplainobject-4.0.6.tgz}
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
     dev: false
 
   /lodash.isstring@4.0.1:
-    resolution: {integrity: sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=, tarball: http://registry.npm.qima-inc.com/lodash.isstring/download/lodash.isstring-4.0.1.tgz}
+    resolution: {integrity: sha512-0wJxfxH1wgO3GrbuP+dTTk7op+6L41QCXbGINEmD+ny/G/eCqGzxyCsh7159S+mgDDcoarnBw6PC1PS5+wUGgw==}
     dev: false
 
   /lodash.memoize@4.1.2:
@@ -4858,7 +4860,7 @@ packages:
     dev: true
 
   /lodash.once@4.1.1:
-    resolution: {integrity: sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=, tarball: http://registry.npm.qima-inc.com/lodash.once/download/lodash.once-4.1.1.tgz}
+    resolution: {integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==}
     dev: false
 
   /lodash@4.17.21:
@@ -5116,7 +5118,7 @@ packages:
     dev: false
 
   /onnxruntime-node@1.14.0:
-    resolution: {integrity: sha1-xK5sNVz659g6uvNt05qQXEoBAhc=, tarball: http://registry.npm.qima-inc.com/onnxruntime-node/download/onnxruntime-node-1.14.0.tgz}
+    resolution: {integrity: sha512-5ba7TWomIV/9b6NH/1x/8QEeowsb+jBEvFzU6z0T4mNsFwdPqXeFUM7uxC6QeSRkEbWu3qEB0VMjrvzN/0S9+w==}
     os: [win32, darwin, linux]
     requiresBuild: true
     dependencies:
@@ -5289,7 +5291,7 @@ packages:
     dev: false
 
   /peek-readable@4.1.0:
-    resolution: {integrity: sha1-Ts4REb9cKtiGfDFMgTVoR+imLnI=, tarball: http://registry.npm.qima-inc.com/peek-readable/download/peek-readable-4.1.0.tgz}
+    resolution: {integrity: sha512-ZI3LnwUv5nOGbQzD9c2iDG6toheuXSZP5esSHBjopsXH4dg19soufvpUGA3uohi5anFtGb2lhAVdHzH6R/Evvg==}
     engines: {node: '>=8'}
     dev: false
 
@@ -5324,13 +5326,13 @@ packages:
     dev: false
 
   /playwright-core@1.45.1:
-    resolution: {integrity: sha1-VJonAVVrWCRcx1Jj+fwnlcEVjcE=, tarball: http://registry.npm.qima-inc.com/playwright-core/download/playwright-core-1.45.1.tgz}
+    resolution: {integrity: sha512-LF4CUUtrUu2TCpDw4mcrAIuYrEjVDfT1cHbJMfwnE2+1b8PZcFzPNgvZCvq2JfQ4aTjRCCHw5EJ2tmr2NSzdPg==}
     engines: {node: '>=18'}
     hasBin: true
     dev: false
 
   /playwright@1.45.1:
-    resolution: {integrity: sha1-qqaw1tsUeWtZnYDGZ55jRE6UJTQ=, tarball: http://registry.npm.qima-inc.com/playwright/download/playwright-1.45.1.tgz}
+    resolution: {integrity: sha512-Hjrgae4kpSQBr98nhCj3IScxVeVUixqj+5oyif8TdIn2opTCPEzqAqNMeK42i3cWDCVu9MI+ZsGWw+gVR4ISBg==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -5409,11 +5411,11 @@ packages:
     dev: false
 
   /proxy-from-env@1.1.0:
-    resolution: {integrity: sha1-4QLxbKNVQkhldV0sno6k8k1Yw+I=, tarball: http://registry.npm.qima-inc.com/proxy-from-env/download/proxy-from-env-1.1.0.tgz}
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
 
   /psl@1.15.0:
-    resolution: {integrity: sha1-vazjGJbx2XzsannoIkiYzpPZdMY=, tarball: http://registry.npm.qima-inc.com/psl/download/psl-1.15.0.tgz}
+    resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
     dependencies:
       punycode: 2.3.1
     dev: false
@@ -5426,7 +5428,7 @@ packages:
     dev: false
 
   /punycode@2.3.1:
-    resolution: {integrity: sha1-AnQi4vrsCyXhVJw+G9gwm5EztuU=, tarball: http://registry.npm.qima-inc.com/punycode/download/punycode-2.3.1.tgz}
+    resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
     dev: false
 
@@ -5449,7 +5451,7 @@ packages:
     dev: false
 
   /querystringify@2.2.0:
-    resolution: {integrity: sha1-M0WUG0FTy50ILY7uTNogFqmu9/Y=, tarball: http://registry.npm.qima-inc.com/querystringify/download/querystringify-2.2.0.tgz}
+    resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
     dev: false
 
   /range-parser@1.2.1:
@@ -5502,7 +5504,7 @@ packages:
     dev: false
 
   /readable-web-to-node-stream@3.0.2:
-    resolution: {integrity: sha1-XVK7Xfe1SGH9SNAV6TosuHs+4Ls=, tarball: http://registry.npm.qima-inc.com/readable-web-to-node-stream/download/readable-web-to-node-stream-3.0.2.tgz}
+    resolution: {integrity: sha512-ePeK6cc1EcKLEhJFt/AebMCLL+GgSKhuygrZ/GLaKZYEecIgIECf4UaUuaByiGtzckwR4ain9VzUh95T1exYGw==}
     engines: {node: '>=8'}
     dependencies:
       readable-stream: 3.6.2
@@ -5514,7 +5516,7 @@ packages:
     dev: true
 
   /requires-port@1.0.0:
-    resolution: {integrity: sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=, tarball: http://registry.npm.qima-inc.com/requires-port/download/requires-port-1.0.0.tgz}
+    resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
     dev: false
 
   /resolve-cwd@3.0.0:
@@ -5545,7 +5547,7 @@ packages:
     dev: true
 
   /retry-axios@2.6.0(axios@1.8.4):
-    resolution: {integrity: sha1-1Nxcio5zmC4mpwXkajPfmaKHI+A=, tarball: http://registry.npm.qima-inc.com/retry-axios/download/retry-axios-2.6.0.tgz}
+    resolution: {integrity: sha512-pOLi+Gdll3JekwuFjXO3fTq+L9lzMQGcSq7M5gIjExcl3Gu1hd4XXuf5o3+LuSBsaULQH7DiNbsqPd1chVpQGQ==}
     engines: {node: '>=10.7.0'}
     peerDependencies:
       axios: '*'
@@ -5647,6 +5649,8 @@ packages:
       simple-get: 4.0.1
       tar-fs: 3.0.8
       tunnel-agent: 0.6.0
+    transitivePeerDependencies:
+      - bare-buffer
     dev: false
 
   /shebang-command@2.0.0:
@@ -5773,7 +5777,7 @@ packages:
       fast-fifo: 1.3.2
       text-decoder: 1.2.3
     optionalDependencies:
-      bare-events: 2.5.0
+      bare-events: 2.5.4
     dev: false
 
   /string-length@4.0.2:
@@ -5845,7 +5849,7 @@ packages:
     dev: false
 
   /strtok3@6.3.0:
-    resolution: {integrity: sha1-NYuA/+bV1WIOGaBzqnjOlHqQ+aA=, tarball: http://registry.npm.qima-inc.com/strtok3/download/strtok3-6.3.0.tgz}
+    resolution: {integrity: sha512-fZtbhtvI9I48xDSywd/somNqgUHl2L2cstmXCCif0itOf96jeW18MBSyrLuNicYQVkvpOxkZtkzujiTJ9LW5Jw==}
     engines: {node: '>=10'}
     dependencies:
       '@tokenizer/token': 0.3.0
@@ -5887,6 +5891,8 @@ packages:
     optionalDependencies:
       bare-fs: 4.1.2
       bare-path: 3.0.0
+    transitivePeerDependencies:
+      - bare-buffer
     dev: false
 
   /tar-stream@2.2.0:
@@ -5940,7 +5946,7 @@ packages:
     dev: false
 
   /token-types@4.2.1:
-    resolution: {integrity: sha1-D4l/A2ZYRpgoBuE4l32+ctRN91M=, tarball: http://registry.npm.qima-inc.com/token-types/download/token-types-4.2.1.tgz}
+    resolution: {integrity: sha512-6udB24Q737UD/SDsKAHI9FCRP7Bqc9D/MQUV02ORQg5iskjtLJlZJNdN4kKtcdtwCeWIwIHDGaUsTsCCAa8sFQ==}
     engines: {node: '>=10'}
     dependencies:
       '@tokenizer/token': 0.3.0
@@ -5948,7 +5954,7 @@ packages:
     dev: false
 
   /tough-cookie@4.1.4:
-    resolution: {integrity: sha1-lF8UYbRbWox2ghwz6knDrBksGzY=, tarball: http://registry.npm.qima-inc.com/tough-cookie/download/tough-cookie-4.1.4.tgz}
+    resolution: {integrity: sha512-Loo5UUvLD9ScZ6jh8beX1T6sO1w2/MpCRpEP7V280GKMVUQ0Jzar2U3UJPsrdbziLEMMhu3Ujnq//rhiFuIeag==}
     engines: {node: '>=6'}
     dependencies:
       psl: 1.15.0
@@ -6032,7 +6038,7 @@ packages:
     dev: true
 
   /ts-toolbelt@9.6.0:
-    resolution: {integrity: sha1-UKJUJs/tUA1KCb0bOvtvKIee39U=, tarball: http://registry.npm.qima-inc.com/ts-toolbelt/download/ts-toolbelt-9.6.0.tgz}
+    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
     dev: false
 
   /ts-type@3.0.1(ts-toolbelt@9.6.0):
@@ -6101,7 +6107,7 @@ packages:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   /universalify@0.2.0:
-    resolution: {integrity: sha1-ZFF2BWb6hXU0dFqx3elS0bF2G+A=, tarball: http://registry.npm.qima-inc.com/universalify/download/universalify-0.2.0.tgz}
+    resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==}
     engines: {node: '>= 4.0.0'}
     dev: false
 
@@ -6126,7 +6132,7 @@ packages:
     dev: false
 
   /url-parse@1.5.10:
-    resolution: {integrity: sha1-nTwvc2wddd070r5QfcwRHx4uqcE=, tarball: http://registry.npm.qima-inc.com/url-parse/download/url-parse-1.5.10.tgz}
+    resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==}
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
@@ -6138,6 +6144,11 @@ packages:
 
   /uuid@10.0.0:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
+    dev: false
+
+  /uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
     dev: false
 
@@ -6240,7 +6251,7 @@ packages:
     dev: true
 
   /ws@8.18.1:
-    resolution: {integrity: sha1-6hMdN4Th39/5GtsKShFrEnUV48s=, tarball: http://registry.npm.qima-inc.com/ws/download/ws-8.18.1.tgz}
+    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
