@@ -87,23 +87,38 @@ export interface KeyConcepts {
 
 export interface ChapterAnalysis {
   chapterId: string; // 章节唯一标识符
+  
+  // 结构分析
   structure: {
-    type: 'narrative' | 'descriptive' | 'dialogue-heavy' | 'mixed'; // 结构类型：叙述性|描述性|对话为主|混合型
-    complexity: number; // 复杂度评分(1-10)
-    keyPoints: string[]; // 关键点列表
+    type?: 'narrative' | 'descriptive' | 'dialogue-heavy' | 'mixed'; // 结构类型
+    complexity?: number; // 复杂度评分(1-10)
+    coreIdea?: string; // 核心思想或中心观点
+    keyPoints?: string[]; // 关键点列表
   };
-  characters: {
-    name: string; // 角色名称
-    importance: 'main' | 'supporting' | 'minor'; // 重要性：主要|支持|次要
-    traits: string[]; // 角色特点
-  }[];
-  settings: {
-    location: string; // 场景位置
-    time: string; // 场景时间
-    description: string; // 场景描述
-  }[];
-  themes: string[]; // 主题列表
-  suggestedEpisodeCount: number; // 建议集数
+  
+  // 受众分析
+  audience: {
+    targetGroup?: string; // 适合的目标受众
+    priorKnowledge?: 'none' | 'basic' | 'intermediate'; // 先验知识要求
+    educationalValue?: number; // 教育价值评分(1-10)
+  };
+  
+  // 可视化潜力
+  visualizationPotential: {
+    conceptsEasyToVisualize?: string[]; // 易于可视化的概念
+    suggestedVisualElements?: string[]; // 建议的视觉元素
+  };
+  
+  // 视频规划
+  videoPlanning: {
+    suggestedEpisodeCount?: number; // 建议集数
+    difficultyToExplain?: number; // 概念解释难度(1-10)
+    recommendedApproach?: 'analogy' | 'step-by-step' | 'comparison' | 'storytelling'; // 建议讲解方式
+    potentialExamples?: string[]; // 潜在示例
+  };
+  
+  
+  themes?: string[]; // 主题列表
 }
 
 export interface KeyInformation {

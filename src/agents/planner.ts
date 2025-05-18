@@ -21,28 +21,39 @@ const planEpisodes = tool(
       });
 
       const planPrompt = ChatPromptTemplate.fromTemplate(`
-      你是一位专业的知识类短视频总策划。你的任务是基于电子书内容规划一系列3分钟短视频解说集数，每集围绕一个核心思想进行讲解。
-      请确保:
-      1. 每集内容量适合3分钟视频
-      2. 核心思想解释清晰且完整
-      3. 每集围绕单一核心概念，包含讲解和通俗示例
-      4. 整体解说风格一致
+      你是一位专业的知识类短视频总策划。你的任务是将电子书内容转化为精彩的3分钟短视频系列，每集围绕一个明确的核心概念进行讲解。
+      
+      任务要求:
+      1. 每集视频严格控制在3分钟，大约450字左右的解说词
+      2. 每集聚焦单一核心概念，确保概念完整性和自包含性
+      3. 概念难度和内容密度要均衡，避免单集内容过于复杂或过于简单
+      4. 各集之间要有合理的知识递进和连贯性
+      5. 优先选择具有可视化潜力和实用价值的概念
+      
+      你的规划应考虑:
+      - 目标受众的接受能力和先验知识
+      - 概念的教育价值和趣味性
+      - 内容的可视化表达潜力
+      - 适合3分钟短视频的讲解深度
 
       以下是电子书内容分析:
       {contentAnalysis}
 
-      请将电子书核心思想规划为多个解说集数，并按照以下JSON格式返回:
+      请规划一系列精彩的短视频剧集，并按照以下JSON格式返回:
       [
         {
-          "id": "唯一ID", 
-          "title": "集数标题",
-          "coreIdeaId": "所基于的核心思想ID",
+          "id": "ep-唯一ID", 
+          "title": "引人入胜的集数标题",
+          "coreIdeaId": "对应核心思想ID",
           "order": 集数编号,
-          "synopsis": "本集概要",
-          "keyPoints": ["关键点1", "关键点2", ...],
-          "concepts": ["概念1", "概念2", ...],
-          "estimatedDuration": 180,
-          "targetTone": "educational|conversational|inspirational|analytical|storytelling"
+          "synopsis": "本集25字左右概要，突出核心卖点",
+          "keyPoints": ["关键点1", "关键点2", "关键点3"], // 限制3-5个关键点
+          "concepts": ["核心概念", "相关概念"], // 限制2-3个概念
+          "visualizationSuggestions": ["可视化建议1", "可视化建议2"], // 视觉表现建议
+          "exampleTypes": ["类比", "案例", "故事"], // 建议的示例类型
+          "estimatedDuration": 180, // 秒数
+          "targetTone": "educational|conversational|inspirational|analytical|storytelling",
+          "audiencePrerequisites": "none|basic|intermediate" // 观众需要的知识基础
         },
         ...
       ]
@@ -95,16 +106,53 @@ const defineStyle = tool(
       });
 
       const stylePrompt = ChatPromptTemplate.fromTemplate(`
-      你是一位短视频解说风格顾问。请基于以下电子书内容分析，定义适合的单人解说视频风格、目标受众和表达规则。
+      你是一位专业的短视频解说风格设计师。请基于以下电子书内容分析，设计一套引人入胜且教育性强的单人解说视频风格方案。
+      
+      你需要考虑：
+      1. 内容类型与解说风格的匹配度
+      2. 目标受众的认知水平和兴趣点
+      3. 3分钟短视频的高效信息传递需求
+      4. 知识类内容的通俗化表达方式
+      5. 如何在短时间内建立观众兴趣和信任
+      
+      设计的风格应当：
+      - 具有独特识别性，让系列视频风格一致
+      - 平衡教育性与趣味性
+      - 提供清晰的表达指导和语言规范
+      - 适合各类核心概念的讲解需求
+      - 考虑不同年龄段、教育背景的受众需求
 
       内容分析:
       {contentAnalysis}
 
       请按照以下JSON格式返回:
       {
-        "style": "详细的解说风格描述，包括表达方式、语调、专业程度等",
-        "audience": "目标受众描述",
-        "presentationRules": ["表达规则1", "表达规则2", ...]
+        "style": {
+          "tonality": "视频整体基调（如严谨学术型/轻松对话型/启发思考型）",
+          "narrationStyle": "解说风格描述，包括语速、语调、表达特点等",
+          "linguisticFeatures": "语言特点，如是否使用修辞、类比、问句等",
+          "personalityTrait": "解说人设特点（如专业教授/好奇探索者/贴心导师）"
+        },
+        "audience": {
+          "primaryTarget": "主要目标受众描述",
+          "ageRange": "适合的年龄范围",
+          "knowledgeLevel": "假设的知识水平",
+          "interests": ["兴趣点1", "兴趣点2", "兴趣点3"]
+        },
+        "presentationRules": [
+          "表达规则1（如避免使用专业术语）",
+          "表达规则2（如每个概念必须配合一个实例）",
+          "表达规则3（如关键术语需要强调）"
+        ],
+        "visualConsiderations": [
+          "视觉元素建议1",
+          "视觉元素建议2"
+        ],
+        "introOutroTemplates": {
+          "introTemplate": "开场白模板，XX字以内",
+          "outroTemplate": "结束语模板，XX字以内",
+          "transitionPhrases": ["过渡短语1", "过渡短语2"]
+        }
       }
     `);
 
@@ -148,8 +196,22 @@ const estimateTotalEpisodes = tool(async (args: any, config: RunnableConfig) => 
     });
 
     const estimatePrompt = ChatPromptTemplate.fromTemplate(`
-      你是一位短视频规划专家。请基于以下内容分析，估算将电子书改编为3分钟单人解说短视频所需的总集数。
-      请考虑核心概念数量、复杂度、关键思想点等因素。
+      你是一位知识型短视频内容规划专家。你需要基于电子书内容分析，科学合理地估算将其转化为3分钟短视频系列所需的集数。
+      
+      请考虑以下因素进行评估：
+      1. 每集视频3分钟，约450字解说文本
+      2. 每集必须聚焦一个完整且自包含的核心概念
+      3. 概念的复杂度和可分解性
+      4. 受众的理解能力和注意力维持
+      5. 知识点之间的关联性和独立性
+      6. 内容的教育价值和优先级
+      
+      集数规划原则：
+      - 宁可分散复杂概念到多集，也不要在单集内塞入过多内容
+      - 保持各集内容量大致均衡
+      - 考虑受众接受能力，避免连续出现高难度内容
+      - 确保系列整体完整性和逻辑连贯性
+      - 考虑视频产出效率和资源投入
 
       内容分析:
       {contentAnalysis}
@@ -157,7 +219,23 @@ const estimateTotalEpisodes = tool(async (args: any, config: RunnableConfig) => 
       请按照以下JSON格式返回:
       {
         "totalEpisodes": 估算的总集数,
-        "reasoning": "详细的推理过程和依据"
+        "episodeBreakdown": [
+          {
+            "conceptCluster": "概念集合1",
+            "episodeCount": 预计集数,
+            "complexity": 1-10评分,
+            "rationale": "规划依据"
+          },
+          {
+            "conceptCluster": "概念集合2",
+            "episodeCount": 预计集数,
+            "complexity": 1-10评分,
+            "rationale": "规划依据"
+          }
+        ],
+        "contentDistributionStrategy": "内容分布策略描述",
+        "estimatedProductionTimePerEpisode": "每集预计制作时间（小时）",
+        "recommendedSequencing": "建议的发布顺序策略"
       }
     `);
 

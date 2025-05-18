@@ -2,6 +2,8 @@ import { Chapter, ChapterAnalysis } from '../../types/document';
 import { DEFAULT_MODEL } from '../../config/constants';
 import { ChatOpenAI } from '@langchain/openai';
 import { PromptTemplate } from '@langchain/core/prompts';
+import { getModelBuilder } from '../../helper/getModelBuilder';
+import { z } from 'zod';
 
 /**
  * 分析章节结构并提取关键信息
@@ -10,46 +12,58 @@ import { PromptTemplate } from '@langchain/core/prompts';
  */
 export async function analyzeStructure(chapters: Chapter[]): Promise<ChapterAnalysis[]> {
   try {
-    const model = new ChatOpenAI({
-      modelName: DEFAULT_MODEL,
-      temperature: 0
+    const builder = await getModelBuilder(
+      { type: "chat", provider: "ollama", model: "qwen3:4b" },
+      {
+        temperature: 0,
+        // verbose: true, // 输出详细日志
+      }
+    );
+  
+    const model = await builder();
+    
+    // 定义输出结构的Schema
+    const chapterAnalysisSchema = z.object({
+      structure: z.object({
+        type: z.enum(["narrative", "descriptive", "dialogue-heavy", "mixed"]),
+        complexity: z.number().min(1).max(10),
+        coreIdea: z.string(),
+        keyPoints: z.array(z.string()).max(5)
+      }),
+      audience: z.object({
+        targetGroup: z.string(),
+        priorKnowledge: z.enum(["none", "basic", "intermediate"]),
+        educationalValue: z.number().min(1).max(10)
+      }),
+      visualizationPotential: z.object({
+        conceptsEasyToVisualize: z.array(z.string()),
+        suggestedVisualElements: z.array(z.string())
+      }),
+      videoPlanning: z.object({
+        suggestedEpisodeCount: z.number().int().positive(),
+        difficultyToExplain: z.number().min(1).max(10),
+        recommendedApproach: z.enum(["analogy", "step-by-step", "comparison", "storytelling"]),
+        potentialExamples: z.array(z.string())
+      }),
+      themes: z.array(z.string())
     });
 
-    const analysisPrompt = PromptTemplate.fromTemplate(`
-      你是一个专业的文学分析专家，你的任务是分析以下章节的结构和内容，并提取关键信息。
-      请尽可能详细地分析，但要保持客观准确。
+    // 创建结构化输出处理器
+    const structuredModel = model.withStructuredOutput(chapterAnalysisSchema);
 
+    const analysisPrompt = PromptTemplate.fromTemplate(`
+      你是一位专业的短视频内容策划专家，专注于将电子书内容转换为3分钟知识类短视频脚本。
+      你的任务是分析以下章节的结构和内容，提取适合讲解的核心思想和关键概念。
+      
       章节标题: {title}
       章节内容:
       {content}
 
-      请按照以下格式回复：
-      
-      {
-        "structure": {
-          "type": "narrative|descriptive|dialogue-heavy|mixed",
-          "complexity": 1-10的数字,
-          "keyPoints": ["关键点1", "关键点2", ...]
-        },
-        "characters": [
-          {
-            "name": "角色名称",
-            "importance": "main|supporting|minor",
-            "traits": ["特点1", "特点2", ...]
-          },
-          ...
-        ],
-        "settings": [
-          {
-            "location": "场景位置",
-            "time": "时间背景",
-            "description": "简短描述"
-          },
-          ...
-        ],
-        "themes": ["主题1", "主题2", ...],
-        "suggestedEpisodeCount": 估计合适的剧集数量
-      }
+      请注意：
+      1. 提取的概念和思想要适合3分钟短视频解说
+      2. 内容要有深度但表达要通俗易懂
+      3. 找出最具教育价值和受众兴趣的要点
+      4. 考虑概念的连贯性和自包含性，确保单个视频能完整表达一个观点
     `);
 
     // 处理每个章节
@@ -58,54 +72,49 @@ export async function analyzeStructure(chapters: Chapter[]): Promise<ChapterAnal
     for (const chapter of chapters) {
       // 如果章节内容太长，可能需要截断或分段处理
       const contentForAnalysis = 
-        chapter.content.length > 8000 
-          ? chapter.content.substring(0, 8000) + "..." 
-          : chapter.content;
+        chapter.pageContent.length > 8000 
+          ? chapter.pageContent.substring(0, 8000) + "..." 
+          : chapter.pageContent;
       
       const promptInput = await analysisPrompt.format({
         title: chapter.title,
         content: contentForAnalysis
       });
       
-      const response = await model.invoke(promptInput);
-      
-      // 解析模型返回的JSON响应
-      let analysisData: any;
       try {
-        // 尝试从响应中提取JSON
-        const jsonMatch = response.content.toString().match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          analysisData = JSON.parse(jsonMatch[0]);
-        } else {
-          throw new Error("无法从响应中提取JSON");
-        }
-      } catch (parseError: any) {
-        console.error("解析响应失败:", parseError);
-        // 创建一个基本的分析结果
-        analysisData = {
+        // 直接获取结构化输出，不再需要复杂的JSON解析
+        const analysisData = await structuredModel.invoke(promptInput);
+        console.log(analysisData);
+        
+        // 创建章节分析对象
+        const chapterAnalysis = {
+          chapterId: chapter.id,
+          structure: analysisData.structure,
+          audience: analysisData.audience,
+          visualizationPotential: analysisData.visualizationPotential,
+          videoPlanning: analysisData.videoPlanning,
+          // 为保持向后兼容性
+          themes: []
+        } as ChapterAnalysis;
+        
+        analysisResults.push(chapterAnalysis);
+        
+      } catch (error) {
+        console.error(`处理章节 ${chapter.title} 失败:`, error);
+        
+        // 创建一个兜底的分析结果
+        const chapterAnalysis = {
+          chapterId: chapter.id,
           structure: {
             type: "mixed",
             complexity: 5,
             keyPoints: ["内容分析失败"]
           },
-          characters: [],
-          settings: [],
           themes: ["未能识别主题"],
-          suggestedEpisodeCount: 1
-        };
+        } as ChapterAnalysis;
+        analysisResults.push(chapterAnalysis);
       }
       
-      // 创建章节分析对象
-      const chapterAnalysis: ChapterAnalysis = {
-        chapterId: chapter.id,
-        structure: analysisData.structure,
-        characters: analysisData.characters || [],
-        settings: analysisData.settings || [],
-        themes: analysisData.themes || [],
-        suggestedEpisodeCount: analysisData.suggestedEpisodeCount || 1
-      };
-      
-      analysisResults.push(chapterAnalysis);
     }
     
     return analysisResults;

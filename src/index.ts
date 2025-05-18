@@ -70,15 +70,14 @@ async function main() {
     // console.log(`文档已保存到存储系统，ID: ${documentId}`);
     
     // 创建工作流
-    const workflow = createMainWorkflow(document);
+    const workflow = createMainWorkflow();
     
     // 执行工作流
     console.log('开始处理文档...');
-    // const result = await workflow.invoke({
-    //   document: document,
-    //   textContent: textContent,
-    //   status: 'pending'
-    // });
+    const result = await workflow.invoke({
+      document: document,
+      status: 'pending'
+    });
     
     // // 检查处理状态
     // if (result.status === 'failed') {
