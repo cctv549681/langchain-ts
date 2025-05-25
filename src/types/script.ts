@@ -1,5 +1,5 @@
 export interface EpisodePlan {
-  chapterId: any; // 关联章节ID
+  chapterId: string | number; // 关联章节ID
   id: string; // 集数计划唯一标识符
   title: string; // 集数标题
   coreIdeaId: string; // 核心思想ID
@@ -63,4 +63,24 @@ export interface TechnicalNote {
   content: string; // 注释内容
   importance: 'critical' | 'recommended' | 'optional'; // 重要性：关键的|推荐的|可选的
   relatedSceneId?: string; // 相关场景ID
+}
+
+// 新的集数规划结果接口
+export interface EpisodePlanningResult {
+  chapterSummary: string; // 章节内容总结
+  extractedConcepts: string[]; // 提取的核心概念列表
+  splitRationale: string; // 拆分理由
+  episodes: {
+    id: string; // 唯一的剧集ID
+    title: string; // 集数标题
+    order: number; // 集数编号
+    synopsis: string; // 本集大纲
+    keyPoints: string[]; // 关键点
+    coreConcepts: string[]; // 核心概念
+    contentSource: string; // 内容来源描述
+    visualizationSuggestions: string[]; // 视觉表现建议
+    exampleTypes: string[]; // 示例类型
+    estimatedDuration: number; // 预估时长
+    targetTone: 'educational' | 'conversational' | 'inspirational' | 'analytical' | 'storytelling'; // 目标风格基调
+  }[];
 } 

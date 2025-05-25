@@ -23,6 +23,8 @@ export async function getModelBuilder(
   } = { type: "llm", provider: "openai" },
   options?: any
 ) {
+
+  console.log(process.env.LANGSMITH_API_KEY, 'process.env.LANGSMITH_API_KEY')
   // Set up LangSmith tracer
   const client = new Client({
     apiUrl: "https://api.smith.langchain.com",

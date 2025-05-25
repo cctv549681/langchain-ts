@@ -353,4 +353,140 @@ export class VectorStoreManager {
       throw new Error(`删除文档向量失败: ${error.message}`);
     }
   }
+
+  /**
+   * 保存工作流状态
+   * @param documentId 文档ID
+   * @param stepName 步骤名称
+   * @param data 要保存的数据
+   */
+  public async saveWorkflowState(
+    documentId: string,
+    stepName: string,
+    data: any
+  ): Promise<string> {
+    try {
+      if (!this.initialized || !this.vectorStore) {
+        await this.initialize();
+      }
+
+      // 将对象数据序列化为字符串
+      const serializedData = JSON.stringify(data);
+      
+      // 创建一个唯一的状态ID
+      const stateId = `workflow-${documentId}-${stepName}`;
+      
+      // 创建文档摘要用于向量化
+      const stateSummary = `Workflow state for document ${documentId} at step ${stepName}`;
+      
+      // 储存到向量数据库
+      const doc = new LangchainDocument({
+        pageContent: stateSummary,
+        metadata: {
+          id: stateId,
+          type: "workflow_state",
+          step: stepName,
+          documentId: documentId,
+          timestamp: Date.now(),
+          data: serializedData
+        }
+      });
+      
+      // 检查是否已存在同名state
+      await this.deleteWorkflowState(documentId, stepName);
+      
+      // 添加新状态
+      await this.vectorStore.addDocuments([doc]);
+      
+      console.log(`工作流状态已保存: ${stepName} for 文档 ${documentId}`);
+      return stateId;
+    } catch (error: any) {
+      console.error("保存工作流状态失败:", error);
+      throw new Error(`保存工作流状态失败: ${error.message}`);
+    }
+  }
+
+  /**
+   * 获取工作流状态
+   * @param documentId 文档ID
+   * @param stepName 步骤名称
+   */
+  public async getWorkflowState(
+    documentId: string,
+    stepName: string
+  ): Promise<any | null> {
+    try {
+      if (!this.initialized || !this.vectorStore) {
+        await this.initialize();
+      }
+
+      // 查询状态记录
+      // 注意：使用 where 参数和 $eq 操作符是 ChromaDB 推荐的过滤方式
+      // 使用类型断言绕过 TypeScript 类型检查，因为 LangChain 的类型定义与 ChromaDB API 不完全匹配
+      const results = await this.vectorStore.similaritySearch(
+        `Workflow state for document ${documentId} at step ${stepName}`,
+        1,
+        {
+          step: stepName
+        }
+      );
+
+      if (results.length > 0) {
+        const stateDoc = results[0];
+        // 解析存储的数据
+        if (stateDoc.metadata.data) {
+          try {
+            return JSON.parse(stateDoc.metadata.data);
+          } catch (e) {
+            console.error("解析工作流状态数据失败:", e);
+          }
+        }
+      }
+      
+      return null;
+    } catch (error: any) {
+      console.error("获取工作流状态失败:", error);
+      return null;
+    }
+  }
+
+  /**
+   * 删除工作流状态
+   * @param documentId 文档ID
+   * @param stepName 步骤名称
+   */
+  private async deleteWorkflowState(
+    documentId: string,
+    stepName: string
+  ): Promise<void> {
+    try {
+      if (!this.initialized || !this.vectorStore) {
+        await this.initialize();
+      }
+
+      // 删除特定状态
+      await this.vectorStore.delete({
+        where: {
+          type: { $eq: "workflow_state" },
+          documentId: { $eq: documentId },
+          step: { $eq: stepName }
+        } 
+      } as any); // 使用类型断言解决类型不匹配问题
+    } catch (error: any) {
+      console.error("删除工作流状态失败:", error);
+    }
+  }
+
+  /**
+   * 检查工作流步骤是否已完成
+   * @param documentId 文档ID
+   * @param stepName 步骤名称
+   */
+  public async hasCompletedStep(
+    documentId: string,
+    stepName: string
+  ): Promise<boolean> {
+    const state = await this.getWorkflowState(documentId, stepName);
+    return state !== null;
+  }
 } 

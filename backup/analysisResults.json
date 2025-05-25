@@ -1,0 +1,561 @@
+[
+  {
+    "chapterId": "原则2.epub-8",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "人类适应力与创造力是应对挑战的核心力量",
+      "keyPoints": [
+        "历史周期：繁荣-危机-重建的循环模式",
+        "经济与战争的双重压力测试",
+        "人类适应力的进化轨迹",
+        "危机中的积极转化力量"
+      ]
+    },
+    "audience": {
+      "targetGroup": "普通大众",
+      "priorKnowledge": "basic",
+      "educationalValue": 3
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "历史周期曲线图",
+        "经济萧条与复苏对比图",
+        "人类适应力增长曲线"
+      ],
+      "suggestedVisualElements": [
+        "动态时间轴展示历史周期",
+        "对比图表显示经济波动",
+        "人类进化与适应力增长曲线"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "1929-1933经济大萧条",
+        "二战期间的适应与重建",
+        "现代经济危机与应对"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-9",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "国家的兴衰取决于其继承的自然条件与人类行为的平衡",
+      "keyPoints": [
+        "地理与资源：国家的自然条件是基础，但并非决定性因素",
+        "人力资本：教育、文化、制度决定长期发展",
+        "人性驱动：对财富、权力的追求是核心动力",
+        "历史借鉴：学习历史能避免重复错误",
+        "代际周期：世代更替影响国家命运"
+      ]
+    },
+    "audience": {
+      "targetGroup": "普通观众",
+      "priorKnowledge": "basic",
+      "educationalValue": 3
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "地理屏障",
+        "资源分布",
+        "历史曲线",
+        "代际图表"
+      ],
+      "suggestedVisualElements": [
+        "地图展示国家地理",
+        "资源分布图",
+        "历史曲线图",
+        "代际时间轴"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 1,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "美国的地理优势与人力资本",
+        "荷兰的代际成功案例",
+        "历史周期的可视化"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-10",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "货币和信贷的创造与财富增长之间存在根本性差异，理解这种差异有助于避免经济周期的陷阱。",
+      "keyPoints": [
+        "货币和信贷没有内在价值，只是会计记录",
+        "财富增长依赖于实际生产，而非货币创造",
+        "经济周期源于货币供需的周期性波动",
+        "央行的货币政策影响经济，但无法完全控制周期",
+        "长期债务周期影响人类一生，需提前认知"
+      ]
+    },
+    "audience": {
+      "targetGroup": "普通投资者和对经济感兴趣的大众",
+      "priorKnowledge": "basic",
+      "educationalValue": 5
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "货币创造过程",
+        "经济周期波动曲线",
+        "财富与货币的对比图表"
+      ],
+      "suggestedVisualElements": [
+        "货币符号与会计账本的对比",
+        "经济周期波浪图",
+        "实物生产与货币创造的对比动画"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 1,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "analogy",
+      "potentialExamples": [
+        "用房子价格涨跌说明财富估值与实际财富的区别",
+        "用兴奋剂比喻央行的货币政策"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-11",
+    "structure": {
+      "type": "mixed",
+      "complexity": 5,
+      "keyPoints": [
+        "内容分析失败"
+      ]
+    },
+    "themes": [
+      "未能识别主题"
+    ]
+  },
+  {
+    "chapterId": "原则2.epub-12",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "国家发展周期的三个阶段：动荡、重建、繁荣",
+      "keyPoints": [
+        "国家发展有三个阶段：动荡（革命/战争）、重建（制度建设）、繁荣（和平与经济成长）",
+        "每个阶段都有不同类型的领导者：革命者、建设者、远见者",
+        "成功国家需要经历这三个阶段，且每个阶段都至关重要",
+        "历史案例显示：革命后必须重建制度，否则无法维持长期繁荣",
+        "繁荣时期需要领导者有远见和执行力，才能持续发展"
+      ]
+    },
+    "audience": {
+      "targetGroup": "对历史、政治、经济感兴趣的普通观众",
+      "priorKnowledge": "basic",
+      "educationalValue": 3
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "三个阶段的循环图",
+        "不同领导者类型的象征性形象",
+        "历史事件的时间轴"
+      ],
+      "suggestedVisualElements": [
+        "动态的三个阶段循环图",
+        "不同颜色代表不同阶段",
+        "历史人物的剪影或象征性图像",
+        "时间轴展示关键历史事件"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "法国大革命到拿破仑时代",
+        "美国独立战争后重建",
+        "新加坡建国初期"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-13",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "经济危机催生极端主义，法西斯主义崛起",
+      "keyPoints": [
+        "经济危机导致社会动荡，极端主义崛起",
+        "法西斯主义的三个核心特征：专制、资本主义、集体主义",
+        "德国和日本的案例：经济崩溃→军事扩张→法西斯统治",
+        "美国的贸易保护主义加剧全球经济危机",
+        "天灾与政治清洗加剧社会矛盾"
+      ]
+    },
+    "audience": {
+      "targetGroup": "青少年及对历史、经济感兴趣的普通观众",
+      "priorKnowledge": "basic",
+      "educationalValue": 3
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "德国股市增长图表",
+        "日本经济数据对比",
+        "法西斯主义三要素图示",
+        "美国关税政策变化"
+      ],
+      "suggestedVisualElements": [
+        "动态地图显示德国和日本扩张路线",
+        "经济数据对比图表",
+        "法西斯主义三要素图示",
+        "历史事件时间轴"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "德国经济复苏与军事扩张",
+        "日本的资源掠夺与扩张",
+        "美国的关税政策与全球影响"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-14",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "金融资产与实物资产的周期性对比揭示了经济规律",
+      "keyPoints": [
+        "金融资产（如股票、债券）与实物资产（如房地产、黄金）的回报率存在周期性反向关系",
+        "历史数据显示，当金融资产回报率下降时，实物资产（如黄金）往往表现优异",
+        "货币贬值周期中，硬资产（如黄金）价值上升，而纸币实际回报率下降",
+        "国家政策（如税收、资本管制）对资产价值有重大影响",
+        "投资者需理解周期规律，避免在市场低点恐慌卖出，高点贪婪买入"
+      ]
+    },
+    "audience": {
+      "targetGroup": "普通投资者",
+      "priorKnowledge": "basic",
+      "educationalValue": 5
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "金融资产 vs 实物资产回报率对比",
+        "黄金与股票/债券的反向关系",
+        "货币贬值周期图示"
+      ],
+      "suggestedVisualElements": [
+        "双轴折线图：金融资产（股票/债券）与实物资产（黄金/房地产）回报率对比",
+        "时间轴：展示历史周期事件（如战争、经济危机）对资产价值的影响",
+        "动态图表：展示货币贬值与硬资产价值上升的对应关系"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "1900-1914年：金融资产回报率下降，黄金价格上涨",
+        "2008年金融危机：股票暴跌，黄金上涨",
+        "2020年疫情：债券收益率下降，黄金上涨"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-16",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "The 16th-century European religious reform was a pivotal moment in history, reshaping the political and social landscape of Europe.",
+      "keyPoints": [
+        "The religious reform began with Martin Luther's 95 Theses in 1517, challenging the authority of the Catholic Church.",
+        "The reform led to the rise of Protestantism and the fragmentation of Christendom into multiple religious factions.",
+        "The conflict between Catholics and Protestants resulted in widespread wars, including the Thirty Years' War, which devastated much of Europe.",
+        "The reform weakened the power of the Holy Roman Empire and the Habsburg dynasty, leading to long-term political changes in Europe.",
+        "The religious reform had lasting effects on the development of modern political and religious institutions."
+      ]
+    },
+    "audience": {
+      "targetGroup": "General public interested in history",
+      "priorKnowledge": "basic",
+      "educationalValue": 4
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "Martin Luther",
+        "95 Theses",
+        "Protestantism",
+        "Thirty Years' War",
+        "Holy Roman Empire"
+      ],
+      "suggestedVisualElements": [
+        "Martin Luther standing in a church with a scroll",
+        "A map of Europe showing the division into Catholic and Protestant regions",
+        "A depiction of the Thirty Years' War with soldiers and battle scenes",
+        "A timeline showing the spread of Protestantism across Europe",
+        "A comparison of the power of the Holy Roman Empire before and after the religious reform"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "The story of Martin Luther and his 95 Theses",
+        "The spread of Protestantism across Europe",
+        "The impact of the religious reform on the Holy Roman Empire and the Thirty Years' War"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-17",
+    "structure": {
+      "type": "mixed",
+      "complexity": 5,
+      "keyPoints": [
+        "内容分析失败"
+      ]
+    },
+    "themes": [
+      "未能识别主题"
+    ]
+  },
+  {
+    "chapterId": "原则2.epub-18",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "法国大革命与拿破仑崛起是欧洲权力格局重塑的关键转折点，揭示了制度缺陷、经济危机与军事扩张如何导致帝国兴衰。",
+      "keyPoints": [
+        "法国大革命的根源：财政崩溃、社会不平等与政治僵化",
+        "拿破仑崛起的必然性：革命后的权力真空与军事天才",
+        "维也纳会议的实质：旧秩序重建与新秩序的开端",
+        "历史循环：帝国兴衰的规律性与人类社会的永恒课题"
+      ]
+    },
+    "audience": {
+      "targetGroup": "青少年及历史爱好者",
+      "priorKnowledge": "basic",
+      "educationalValue": 3
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "法国大革命时期的货币贬值",
+        "拿破仑军事征服地图",
+        "维也纳会议的权力博弈",
+        "帝国兴衰的循环图示"
+      ],
+      "suggestedVisualElements": [
+        "动态货币贬值曲线",
+        "拿破仑征服路线图",
+        "维也纳会议场景复原",
+        "帝国兴衰时间轴"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "法国大革命的货币危机",
+        "拿破仑的军事扩张",
+        "维也质会议的权力重组"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-19",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "美元霸权的兴衰与全球金融体系的演变",
+      "keyPoints": [
+        "美元作为世界储备货币的崛起：从布雷顿森林体系到黄金本位的终结",
+        "美国经济实力与美元地位的紧密联系：战后黄金储备与美元信用",
+        "美元霸权的脆弱性：1971年尼克松冲击与布雷顿森林体系的崩溃",
+        "美元体系的演变：从固定汇率到浮动汇率的转变",
+        "美元霸权的现代挑战：中国、俄罗斯等国的崛起与美元替代品的出现"
+      ]
+    },
+    "audience": {
+      "targetGroup": "对国际金融、经济历史感兴趣的普通观众",
+      "priorKnowledge": "basic",
+      "educationalValue": 10
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "布雷顿森林体系的结构图",
+        "美元储备货币地位的演变曲线",
+        "尼克松冲击的事件时间轴",
+        "美元与黄金兑换关系的对比图"
+      ],
+      "suggestedVisualElements": [
+        "世界地图上美元储备货币的分布",
+        "历史汇率变化的折线图",
+        "美元与黄金兑换比例的对比柱状图",
+        "美国经济数据与美元地位的关联图表"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 3,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "布雷顿森林体系的建立与崩溃",
+        "尼克松冲击的历史背景与影响",
+        "美元霸权的现代挑战与未来趋势"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-20",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "中国历史的兴衰周期与现代治理的深刻联系",
+      "keyPoints": [
+        "王朝周期模式：250年兴衰循环，从强盛到衰落的必然规律",
+        "财政与土地问题：土地集中导致不平等，税收基础削弱",
+        "货币危机：过度印钞引发通胀，削弱经济根基",
+        "自然灾害与社会动荡：气候突变加速王朝崩溃",
+        "对外交流与技术差距：闭关锁国导致落后，被外力颠覆"
+      ]
+    },
+    "audience": {
+      "targetGroup": "对历史与政治感兴趣的普通观众",
+      "priorKnowledge": "basic",
+      "educationalValue": 3
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "王朝周期图示",
+        "土地分配变化",
+        "货币贬值曲线",
+        "气候与灾害关联图",
+        "中外交流路线图"
+      ],
+      "suggestedVisualElements": [
+        "古代中国地图",
+        "王朝兴衰时间轴",
+        "土地分配对比图",
+        "货币贬值趋势图",
+        "气候与灾害关联图",
+        "中外交流路线图"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "明朝灭亡与鸦片战争的联系",
+        "清朝闭关锁国与西方冲击",
+        "宋朝财政危机与货币贬值"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-21",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "中美关系的紧张与未来风险",
+      "keyPoints": [
+        "中美科技竞争与脱钩",
+        "台湾问题与地缘政治风险",
+        "主权与文化冲突",
+        "战争与和平的平衡"
+      ]
+    },
+    "audience": {
+      "targetGroup": "普通观众",
+      "priorKnowledge": "basic",
+      "educationalValue": 10
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "科技脱钩",
+        "地缘政治地图",
+        "战争风险",
+        "文化冲突"
+      ],
+      "suggestedVisualElements": [
+        "科技产业链图",
+        "中美军事对比图",
+        "台海地图标注",
+        "文化符号对比"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 4,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "科技脱钩：展示中美在5G、芯片等领域的竞争",
+        "地缘政治：台海局势的紧张与美国的介入",
+        "文化冲突：中美价值观的差异与主权争议",
+        "战争风险：台海危机的可能后果"
+      ]
+    },
+    "themes": []
+  },
+  {
+    "chapterId": "原则2.epub-23",
+    "structure": {
+      "type": "narrative",
+      "complexity": 3,
+      "coreIdea": "全球金融体系正面临重大变革，储备货币（如美元）的衰落将引发财富再分配，而技术创新将重塑未来经济格局。",
+      "keyPoints": [
+        "储备货币（如美元）的衰落是长期趋势，其价值下降将导致持有以美元计价的债务的回报率低于通胀率，引发财富从债权人向债务人转移。",
+        "技术创新（如AI、量子计算）将加速生产力提升，但其发展速度和影响取决于全球政治经济环境。",
+        "投资需关注技术进步与货币体系变革的双重趋势，平衡风险与收益。",
+        "未来20年，人类寿命可能延长20%以上，医疗技术、基因编辑等突破将改变社会结构。",
+        "储备货币的衰落速度慢于其他实力指标（如军事、经济），因此其贬值过程将漫长而复杂。"
+      ]
+    },
+    "audience": {
+      "targetGroup": "普通投资者和对全球经济趋势感兴趣的大众",
+      "priorKnowledge": "basic",
+      "educationalValue": 5
+    },
+    "visualizationPotential": {
+      "conceptsEasyToVisualize": [
+        "货币衰落曲线",
+        "技术发展时间线",
+        "财富再分配模型"
+      ],
+      "suggestedVisualElements": [
+        "美元与欧元的汇率变化曲线",
+        "AI技术发展时间轴",
+        "财富从债权人到债务人的箭头流动图"
+      ]
+    },
+    "videoPlanning": {
+      "suggestedEpisodeCount": 3,
+      "difficultyToExplain": 2,
+      "recommendedApproach": "storytelling",
+      "potentialExamples": [
+        "美元衰落与2008年金融危机的对比",
+        "AI技术发展对医疗和经济的影响",
+        "储备货币衰落的自我强化恶性循环"
+      ]
+    },
+    "themes": []
+  }
+]

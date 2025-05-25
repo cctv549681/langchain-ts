@@ -31,22 +31,23 @@ export async function parseDocument(filePath: string): Promise<Document> {
       processingStatus: "pending",
     };
 
-
     // 创建并返回文档对象
     // 注意：实际实现需要处理章节分割等逻辑
     return {
       id: path.basename(filePath, path.extname(filePath)),
       title: path.basename(filePath, path.extname(filePath)),
       metadata,
-      chapters: doc.filter((chapter) => chapter.pageContent.length > 0).map((chapter, index) => ({
-        ...chapter,
-        id: `${metadata.fileName}-${index + 1}`,
-        order: index + 1,
-        metadata: {
-          ...chapter.metadata,
-          source: filePath,
-        },
-      })),
+      chapters: doc
+        .filter((chapter) => chapter.pageContent.length > 0)
+        .map((chapter, index) => ({
+          ...chapter,
+          id: `${metadata.fileName}-${index + 1}`,
+          order: index + 1,
+          metadata: {
+            ...chapter.metadata,
+            source: filePath,
+          },
+        }))
     };
   } catch (error: any) {
     console.error("PDF解析失败:", error);

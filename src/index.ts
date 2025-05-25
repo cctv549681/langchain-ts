@@ -8,9 +8,10 @@ import { DEFAULT_OUTPUT_DIR } from './config/constants';
 // import { Document, DocumentMetadata } from './types/document';
 import { createMainWorkflow } from './workflows/main-workflow';
 import { parseDocument } from './modules/document-processor/pdf-parser';
-// import { generateOutputFiles } from './utils/file-operations';
-// import { ensureDirectoryExists } from './utils/file-operations';
+import { generateOutputFiles } from './utils/file-operations';
+import { ensureDirectoryExists } from './utils/file-operations';
 import { DataStore } from './storage/data-store';
+import { VectorStoreManager } from './storage/vector-store';
 
 // 加载环境变量
 dotenv.config();
@@ -26,11 +27,12 @@ async function main() {
     const args = process.argv.slice(2);
     const inputFilePath = args[0];
     const outputDir = args[1] || DEFAULT_OUTPUT_DIR;
+    const forceReprocess = args.includes('--force'); // 添加强制重新处理选项
     
     // 检查输入文件
     if (!inputFilePath) {
       console.error('错误: 请提供输入文件路径');
-      console.log('用法: npm run start <输入PDF文件路径> [输出目录路径]');
+      console.log('用法: npm run start <输入PDF文件路径> [输出目录路径] [--force]');
       process.exit(1);
     }
     
@@ -47,27 +49,55 @@ async function main() {
     }
     
     // 确保输出目录存在
-    // ensureDirectoryExists(outputDir);
-    
-    // 更新设置
-    // updateSettings({
-    //   outputDirectory: outputDir
-    // });
+    ensureDirectoryExists(outputDir);
     
     // 初始化数据存储
     const dataStore = DataStore.getInstance();
     await dataStore.initialize();
     
-    // console.log(`使用输入文件: ${inputFilePath}`);
-    // console.log(`输出目录: ${outputDir}`);
+    // 初始化向量存储
+    const vectorStore = VectorStoreManager.getInstance();
+    await vectorStore.initialize();
     
     // 解析PDF
     console.log('正在解析PDF文件...');
     const document = await parseDocument(inputFilePath);
+    document.id = document.id || uuidv4(); // 确保文档有ID
     
-    // 保存文档到存储系统
-    // const documentId = await dataStore.storeDocument(document);
-    // console.log(`文档已保存到存储系统，ID: ${documentId}`);
+    // 检查是否已经完成全部处理
+    const isFullyProcessed = await vectorStore.hasCompletedStep(document.id, 'qualityCheck');
+    
+    if (isFullyProcessed && !forceReprocess) {
+      console.log('该文档已完全处理过，正在从缓存加载结果...');
+      const finalResult = await vectorStore.getWorkflowState(document.id, 'qualityCheck');
+      console.log(`已找到缓存的最终结果，包含 ${finalResult.episodes?.length || 0} 集内容`);
+      
+      // 处理最终结果...
+      if (finalResult.episodes && finalResult.episodes.length > 0) {
+        await generateOutputFiles(finalResult.episodes, outputDir);
+        console.log(`输出文件已生成到目录: ${outputDir}`);
+      } else {
+        console.log('缓存中没有找到有效的剧集数据，需要重新处理');
+      }
+      
+      return;
+    }
+    
+    // 如果强制重新处理，可以清除现有工作流状态
+    if (forceReprocess) {
+      console.log('清除现有的处理状态，准备重新处理...');
+      // 这里不需要特别的清除代码，因为saveWorkflowState会覆盖现有状态
+    }
+    
+    // 存储文档到向量数据库（如果还没有）
+    const hasStoredDoc = await vectorStore.hasCompletedStep(document.id, 'docStored');
+    if (!hasStoredDoc || forceReprocess) {
+      console.log('将文档存储到向量数据库...');
+      await vectorStore.storeDocument(document);
+      await vectorStore.saveWorkflowState(document.id, 'docStored', true);
+    } else {
+      console.log('文档已存在于向量数据库中，跳过存储步骤');
+    }
     
     // 创建工作流
     const workflow = createMainWorkflow();
@@ -79,38 +109,25 @@ async function main() {
       status: 'pending'
     });
     
-    // // 检查处理状态
-    // if (result.status === 'failed') {
-    //   console.error(`处理失败: ${result.error}`);
-    //   await dataStore.updateDocumentStatus(documentId, 'failed', result.error);
-    //   process.exit(1);
-    // }
+    // 检查处理状态
+    if (result.status === 'failed') {
+      console.error(`处理失败: ${result.error}`);
+      process.exit(1);
+    }
     
-    // // 保存处理结果
-    // if (result.episodes && result.episodes.length > 0) {
-    //   // 更新文档状态
-    //   await dataStore.updateDocumentStatus(documentId, 'completed', '处理成功');
+    // 处理结果
+    if (result.episodes && result.episodes.length > 0) {
+      console.log(`处理完成! 生成 ${result.episodes.length} 集短视频解说脚本。`);
       
-    //   // 存储解说计划
-    //   if (result.episodePlans) {
-    //     await dataStore.storeEpisodePlans(documentId, result.episodePlans);
-    //   }
+      console.log('正在生成输出文件...');
+      await generateOutputFiles(result.episodes, outputDir);
       
-    //   // 存储完成的解说集数
-    //   await dataStore.storeEpisodes(documentId, result.episodes);
-      
-    //   console.log(`处理完成! 生成 ${result.episodes.length} 集短视频解说脚本。`);
-      
-    //   console.log('正在生成输出文件...');
-    //   await generateOutputFiles(result.episodes, outputDir);
-      
-    //   console.log(`所有文件已生成到目录: ${outputDir}`);
-    //   console.log('处理完成!');
-    // } else {
-    //   console.error('错误: 没有生成任何解说集数');
-    //   await dataStore.updateDocumentStatus(documentId, 'failed', '没有生成任何解说集数');
-    //   process.exit(1);
-    // }
+      console.log(`所有文件已生成到目录: ${outputDir}`);
+      console.log('处理完成!');
+    } else {
+      console.error('错误: 没有生成任何解说集数');
+      process.exit(1);
+    }
   } catch (error: any) {
     console.error('处理过程中发生错误:', error.message);
     process.exit(1);

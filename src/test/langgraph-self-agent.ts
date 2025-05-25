@@ -17,6 +17,7 @@ import {
 } from "@langchain/langgraph";
 import { ChatOllama } from "@langchain/ollama";
 import { MultiServerMCPClient } from "@langchain/mcp-adapters";
+const thread_id = `thread_${Date.now()}`;
 
 async function main() {
   const client = new MultiServerMCPClient({
@@ -33,10 +34,9 @@ async function main() {
     },
     "tavily-mcp": {
       command: "npx",
-      args: ["-y", "tavily-mcp@0.1.4"],
+      args: ["-y", "tavily-mcp@0.2.0"],
       env: {
         ...process.env,
-        TAVILY_API_KEY: "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",
       },
     },
   });
@@ -60,7 +60,7 @@ async function main() {
   function shouldContinue({ messages }: typeof MessagesAnnotation.State) {
     const lastMessage = messages[messages.length - 1] as AIMessage;
     if (lastMessage.tool_calls?.length) {
-      console.log("call tool");
+      console.log("call tool", lastMessage.tool_calls);
       return "tools";
     }
     console.log("not call tool");
@@ -94,7 +94,7 @@ async function main() {
       ],
     },
     {
-      configurable: { thread_id: "test1" },
+      configurable: { thread_id: thread_id },
     }
   );
 
@@ -107,7 +107,7 @@ async function main() {
       ],
     },
     {
-      configurable: { thread_id: "test1" },
+      configurable: { thread_id: thread_id },
     }
   );
 

@@ -8,10 +8,10 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "test": "jest",
-    "agent:dev": "ts-node src/langchain-react-agent.ts",
-    "plan-execute-agent:dev": "ts-node src/langchain-plan-excute-agent.ts",
-    "langgraph-agent:dev": "ts-node src/langgraph-use-create-react-agent.ts",
-    "langgraph-self-agent:dev": "ts-node src/langgraph-self-agent.ts",
+    "agent:dev": "ts-node src/test/langchain-react-agent.ts",
+    "plan-execute-agent:dev": "ts-node src/test/langchain-plan-excute-agent.ts",
+    "langgraph-agent:dev": "ts-node src/test/langgraph-use-create-react-agent.ts",
+    "langgraph-self-agent:dev": "ts-node src/test/langgraph-self-agent.ts",
     "book-to-video": "ts-node src/index.ts /Users/jiang/Documents/ai/langchain-ts/assets/原则2.epub"
   },
   "license": "MIT",
@@ -34,6 +34,7 @@
     "lodash": "^4.17.21",
     "openai": "^4.95.1",
     "pdf-parse": "^1.1.1",
+    "ts-toolbelt": "^9.6.0",
     "uuid": "^11.1.0",
     "zod": "^3.24.3"
   },
