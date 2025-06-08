@@ -1,0 +1,1347 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>即梦AI提示词完全指南：从入门到精通</title>
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #6c63ff;
+            --accent-color: #ff6b6b;
+            --background-color: #f8f9fa;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --code-bg: #f5f7ff;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWklMjBhcnR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff5252;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+        }
+
+        .toc {
+            background-color: var(--card-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .toc h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .toc a:hover {
+            color: var(--primary-color);
+        }
+
+        .toc .sub-items {
+            padding-left: 1rem;
+            font-size: 0.9rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--secondary-color);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .card {
+            background-color: var(--card-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .tip-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--info-color);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background-color: #fff8e1;
+            border-left: 4px solid var(--warning-color);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success-color);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        code {
+            font-family: monospace;
+            background-color: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .example {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .example-content {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px dashed #dee2e6;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .image-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+                margin-bottom: 2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* 添加动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* 添加滚动到顶部按钮 */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        /* 添加代码高亮 */
+        .highlight {
+            background-color: #fffde7;
+            padding: 0 0.2rem;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">即梦AI提示词指南</div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav class="nav-links">
+                <a href="#intro">介绍</a>
+                <a href="#basics">基础知识</a>
+                <a href="#structure">提示词结构</a>
+                <a href="#advanced">进阶技巧</a>
+                <a href="#templates">实用模板</a>
+                <a href="#examples">案例分析</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>即梦AI提示词完全指南</h1>
+            <p>从入门到精通，掌握即梦AI绘画的提示词编写技巧，创造出令人惊艳的AI艺术作品</p>
+            <a href="#structure" class="btn">开始学习</a>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="content-wrapper">
+            <aside class="sidebar">
+                <div class="toc">
+                    <h2>目录</h2>
+                    <ul>
+                        <li><a href="#intro">1. 即梦AI简介</a></li>
+                        <li><a href="#basics">2. 提示词基础知识</a>
+                            <ul class="sub-items">
+                                <li><a href="#what-is-prompt">什么是提示词</a></li>
+                                <li><a href="#why-important">为什么提示词很重要</a></li>
+                                <li><a href="#jimeng-features">即梦AI的特点</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#structure">3. 提示词结构与公式</a>
+                            <ul class="sub-items">
+                                <li><a href="#basic-formula">基础公式</a></li>
+                                <li><a href="#advanced-formula">进阶公式</a></li>
+                                <li><a href="#keywords-table">关键词对照表</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#advanced">4. 进阶提示词技巧</a>
+                            <ul class="sub-items">
+                                <li><a href="#weight">权重调整</a></li>
+                                <li><a href="#negative-prompt">负面提示词</a></li>
+                                <li><a href="#style-reference">风格引用</a></li>
+                                <li><a href="#camera-settings">镜头设置</a></li>
+                                <li><a href="#lighting">光线与氛围</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#templates">5. 实用提示词模板</a>
+                            <ul class="sub-items">
+                                <li><a href="#portrait">人物肖像</a></li>
+                                <li><a href="#landscape">风景场景</a></li>
+                                <li><a href="#product">产品展示</a></li>
+                                <li><a href="#illustration">插画设计</a></li>
+                                <li><a href="#chinese-style">中国风</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#examples">6. 案例分析</a>
+                            <ul class="sub-items">
+                                <li><a href="#case1">案例1: 人物肖像</a></li>
+                                <li><a href="#case2">案例2: 风景场景</a></li>
+                                <li><a href="#case3">案例3: 产品展示</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#video-prompts">7. 视频生成提示词</a>
+                            <ul class="sub-items">
+                                <li><a href="#video-formula">视频提示词公式</a></li>
+                                <li><a href="#video-examples">视频提示词示例</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#tools">8. 辅助工具与资源</a></li>
+                        <li><a href="#faq">9. 常见问题解答</a></li>
+                        <li><a href="#conclusion">10. 总结与建议</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="main-content">
+                <section id="intro">
+                    <h2>1. 即梦AI简介</h2>
+                    <p>即梦AI（Dreamina）是剪映旗下的一个AI创作平台，支持「图片生成」、「智能画布」、「视频生成」、「故事创作」等功能。作为国产AI绘画工具，即梦AI具有不需要外网、不需要高配置电脑环境、不需要懂英文提示词等优势，用户可以直接使用中文提示词生成高质量图片。</p>
+                    
+                    <div class="card">
+                        <div class="card-title">即梦AI的主要特点</div>
+                        <ul>
+                            <li><strong>中文友好</strong>：完全支持中文提示词，无需翻译成英文</li>
+                            <li><strong>操作简便</strong>：界面直观，新手易上手</li>
+                            <li><strong>功能丰富</strong>：支持文生图、图生图、扩图、局部重绘等多种功能</li>
+                            <li><strong>生成速度快</strong>：相比其他AI绘画工具，生成速度较快</li>
+                            <li><strong>免费使用</strong>：提供免费额度，新用户可以无成本尝试</li>
+                        </ul>
+                    </div>
+
+                    <p>即梦AI的3.0版本进一步提升了生成质量，特别在以下方面有显著提升：</p>
+                    <ul>
+                        <li><strong>真实感拉满</strong>：解决了人物摆拍僵硬和眼神空洞的问题，生成的图像更加自然</li>
+                        <li><strong>文字处理超神</strong>：能精准生成各种字体效果，从醒目的大字到细微的小字都能处理</li>
+                        <li><strong>专业级画面效果</strong>：镜头语言运用恰到好处，构图光影都拿捏，风格丰富</li>
+                    </ul>
+                </section>
+
+                <section id="basics">
+                    <h2>2. 提示词基础知识</h2>
+                    
+                    <div id="what-is-prompt">
+                        <h3>什么是提示词</h3>
+                        <p>提示词（Prompt）是用户向AI模型描述所需生成内容的文本指令。在即梦AI中，提示词是用户告诉AI"你想要什么样的图像"的方式。通过精心设计的提示词，用户可以引导AI生成符合预期的图像。</p>
+                        
+                        <div class="tip-box">
+                            <p><strong>提示：</strong>提示词就像是你和AI之间的沟通桥梁，你描述得越清晰具体，AI就越能理解你的意图并生成符合预期的图像。</p>
+                        </div>
+                    </div>
+                    
+                    <div id="why-important">
+                        <h3>为什么提示词很重要</h3>
+                        <p>好的提示词是生成高质量AI图像的关键。同样的AI模型，使用不同的提示词会产生截然不同的结果。掌握提示词编写技巧可以：</p>
+                        <ul>
+                            <li>提高生成图像的质量和精准度</li>
+                            <li>减少重复生成的次数，节省时间</li>
+                            <li>更好地控制图像的风格、氛围和细节</li>
+                            <li>实现更复杂和创意的视觉效果</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="jimeng-features">
+                        <h3>即梦AI的特点</h3>
+                        <p>了解即梦AI的特点有助于我们更好地编写提示词：</p>
+                        <ul>
+                            <li><strong>中文优化</strong>：即梦AI对中文提示词有很好的理解能力，无需使用英文</li>
+                            <li><strong>风格多样</strong>：支持多种艺术风格，从写实到动漫，从古典到现代</li>
+                            <li><strong>细节控制</strong>：可以通过提示词控制图像的细节，如光线、构图、色彩等</li>
+                            <li><strong>DeepSeek集成</strong>：即梦AI集成了DeepSeek大模型，可以直接生成提示词</li>
+                        </ul>
+                        
+                        <div class="warning-box">
+                            <p><strong>注意：</strong>即梦AI生成的图像质量与提示词的质量直接相关。简单的提示词可能导致生成的图像缺乏细节或不符合预期。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="structure">
+                    <h2>3. 提示词结构与公式</h2>
+                    
+                    <div id="basic-formula">
+                        <h3>基础公式</h3>
+                        <p>即梦AI提示词的基础公式如下：</p>
+                        <div class="code-block">
+                            【主体】+【环境/背景】+【风格】+【情感】
+                        </div>
+                        
+                        <ul>
+                            <li><strong>主体</strong>：指图像中的主要元素，如人物、动物、物体等</li>
+                            <li><strong>环境/背景</strong>：指图像的背景、场景以及周围的环境，如森林、城市、房间等</li>
+                            <li><strong>风格</strong>：描述图像的艺术风格，如插画、赛博朋克、剪纸、摄影等</li>
+                            <li><strong>情感</strong>：描述图像的整体氛围与情感，如梦幻的、写实的、浪漫的等</li>
+                        </ul>
+                        
+                        <div class="example">
+                            <div class="example-title">基础公式示例</div>
+                            <div class="example-content">
+                                一只独行的鹤，晨曦中的雪山之巅，冰晶覆盖的松枝，水墨画，幽蓝主色调，天地苍茫的孤寂感。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="advanced-formula">
+                        <h3>进阶公式</h3>
+                        <p>对于需要更精细控制的场景，可以使用进阶公式：</p>
+                        <div class="code-block">
+                            【主体】+【细节描述】+【环境/背景】+【风格】+【情感】+【光影/色调】+【构图/镜头】+【画质提升】
+                        </div>
+                        
+                        <ul>
+                            <li><strong>主体</strong>：图像的主角或核心元素</li>
+                            <li><strong>细节描述</strong>：主体的详细特征，如颜色、形状、材质、表情等</li>
+                            <li><strong>环境/背景</strong>：场景设定和周围环境</li>
+                            <li><strong>风格</strong>：艺术风格或表现手法</li>
+                            <li><strong>情感</strong>：画面传达的情绪或氛围</li>
+                            <li><strong>光影/色调</strong>：光线效果和色彩倾向</li>
+                            <li><strong>构图/镜头</strong>：画面构图方式和视角</li>
+                            <li><strong>画质提升</strong>：提高画面质量的关键词，如高清、细节丰富等</li>
+                        </ul>
+                        
+                        <div class="example">
+                            <div class="example-title">进阶公式示例</div>
+                            <div class="example-content">
+                                一位精灵骑士在月光下的古老森林中驻马而立，银发尖耳精灵，面容冷峻，手持发光的符文长剑，墨绿色鎏金战甲，披风沾染夜露，马具镶嵌月光石，千年巨树盘根错节，荧光蘑菇丛生，溪流泛着魔法微光，满月当空的寒夜，薄雾在林间流动，月光透过树冠形成光柱，武器与铠甲泛着幽蓝光，魔幻写实风格，神秘深邃的史诗感，带北欧神话元素，8K分辨率，盔甲纹理纤毫毕现，动态雾气渲染，HDR光效，全景深构图。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="keywords-table">
+                        <h3>关键词对照表</h3>
+                        <p>以下是即梦AI常用的关键词分类表，可以根据需要选择合适的关键词组合：</p>
+                        
+                        <h4>主体关键词</h4>
+                        <table>
+                            <tr>
+                                <th>类别</th>
+                                <th>关键词示例</th>
+                            </tr>
+                            <tr>
+                                <td>人物</td>
+                                <td>男孩、女孩、老人、婴儿、少女、青年、中年人、老年人</td>
+                            </tr>
+                            <tr>
+                                <td>动物</td>
+                                <td>猫、狗、鹿、狐狸、熊猫、老虎、鹰、蝴蝶</td>
+                            </tr>
+                            <tr>
+                                <td>物体</td>
+                                <td>花瓶、书籍、手机、电脑、汽车、建筑、家具</td>
+                            </tr>
+                            <tr>
+                                <td>幻想生物</td>
+                                <td>龙、精灵、独角兽、美人鱼、凤凰、僵尸、吸血鬼</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>风格关键词</h4>
+                        <table>
+                            <tr>
+                                <th>类别</th>
+                                <th>关键词示例</th>
+                            </tr>
+                            <tr>
+                                <td>传统艺术风</td>
+                                <td>水墨风、素描风、工笔国画、概念艺术、浮世绘、水彩画、油画风格</td>
+                            </tr>
+                            <tr>
+                                <td>现代风格</td>
+                                <td>赛博朋克风、极简主义、波普艺术、超现实主义、未来主义</td>
+                            </tr>
+                            <tr>
+                                <td>动漫风格</td>
+                                <td>宫崎骏风格、二次元、赛璐璐、日系插画、美式卡通</td>
+                            </tr>
+                            <tr>
+                                <td>摄影风格</td>
+                                <td>人像摄影、风景摄影、街头摄影、微距摄影、黑白摄影、胶片风格</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>光线关键词</h4>
+                        <table>
+                            <tr>
+                                <th>类别</th>
+                                <th>关键词示例</th>
+                            </tr>
+                            <tr>
+                                <td>自然光</td>
+                                <td>晨光、日光、黄昏光、月光、星光、阳光透过云层</td>
+                            </tr>
+                            <tr>
+                                <td>人工光</td>
+                                <td>烛光、霓虹灯、舞台灯光、影棚光、LED灯、火光</td>
+                            </tr>
+                            <tr>
+                                <td>光线效果</td>
+                                <td>逆光、侧光、顶光、环形光、散射光、体积光、光斑</td>
+                            </tr>
+                            <tr>
+                                <td>特殊光效</td>
+                                <td>光晕、光柱、光线追踪、HDR、全局光照、阴影细节</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>构图关键词</h4>
+                        <table>
+                            <tr>
+                                <th>类别</th>
+                                <th>关键词示例</th>
+                            </tr>
+                            <tr>
+                                <td>基本构图</td>
+                                <td>对称构图、三分法构图、黄金分割、框架构图、引导线构图</td>
+                            </tr>
+                            <tr>
+                                <td>视角</td>
+                                <td>俯视角、仰视角、平视角、鸟瞰图、蚂蚁视角、第一人称视角</td>
+                            </tr>
+                            <tr>
+                                <td>镜头类型</td>
+                                <td>广角镜头、长焦镜头、微距镜头、鱼眼镜头、标准镜头</td>
+                            </tr>
+                            <tr>
+                                <td>景别</td>
+                                <td>特写、中景、远景、全景、半身像、全身像、群像</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>情感氛围关键词</h4>
+                        <table>
+                            <tr>
+                                <th>类别</th>
+                                <th>关键词示例</th>
+                            </tr>
+                            <tr>
+                                <td>积极情感</td>
+                                <td>欢乐的、温暖的、希望的、浪漫的、平静的、活力四射的</td>
+                            </tr>
+                            <tr>
+                                <td>消极情感</td>
+                                <td>忧郁的、孤独的、恐惧的、神秘的、压抑的、紧张的</td>
+                            </tr>
+                            <tr>
+                                <td>中性情感</td>
+                                <td>沉思的、超然的、庄严的、古典的、未来感的、怀旧的</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>画质提升关键词</h4>
+                        <table>
+                            <tr>
+                                <th>类别</th>
+                                <th>关键词示例</th>
+                            </tr>
+                            <tr>
+                                <td>分辨率</td>
+                                <td>8K、4K、高清、超高清、高分辨率</td>
+                            </tr>
+                            <tr>
+                                <td>细节</td>
+                                <td>细节丰富、纤毫毕现、精细刻画、超写实细节</td>
+                            </tr>
+                            <tr>
+                                <td>渲染</td>
+                                <td>光线追踪、全局光照、体积光、环境光遮蔽、次表面散射</td>
+                            </tr>
+                            <tr>
+                                <td>专业术语</td>
+                                <td>摄影棚级别、电影级质感、专业摄影、商业级别</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="advanced">
+                    <h2>4. 进阶提示词技巧</h2>
+                    
+                    <div id="weight">
+                        <h3>权重调整</h3>
+                        <p>在即梦AI中，可以通过括号和数字来调整关键词的权重，增强或减弱某些元素的影响：</p>
+                        <div class="code-block">
+                            (关键词:权重值)
+                        </div>
+                        <p>权重值通常在0.5到1.5之间，大于1表示增强影响，小于1表示减弱影响。</p>
+                        
+                        <div class="example">
+                            <div class="example-title">权重调整示例</div>
+                            <div class="example-content">
+                                一位少女站在花园中，(红色连衣裙:1.3)，(微笑:1.2)，阳光照射，(模糊背景:0.8)
+                            </div>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <p><strong>提示：</strong>对于想要突出的元素，可以适当提高权重；对于不太重要但又不想完全去除的元素，可以降低权重。</p>
+                        </div>
+                    </div>
+                    
+                    <div id="negative-prompt">
+                        <h3>负面提示词</h3>
+                        <p>负面提示词用于告诉AI不要生成什么内容，可以避免一些常见问题：</p>
+                        
+                        <div class="example">
+                            <div class="example-title">负面提示词示例</div>
+                            <div class="example-content">
+                                负面提示词：模糊，变形，低质量，低分辨率，手指变形，多余的手指，多余的腿，多余的手臂，奇怪的眼睛，畸形
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <p><strong>注意：</strong>即梦AI的负面提示词功能可能与其他AI工具有所不同，建议参考官方文档了解具体用法。</p>
+                        </div>
+                    </div>
+                    
+                    <div id="style-reference">
+                        <h3>风格引用</h3>
+                        <p>可以引用特定艺术家、作品或风格来指导AI生成特定风格的图像：</p>
+                        
+                        <div class="example">
+                            <div class="example-title">风格引用示例</div>
+                            <div class="example-content">
+                                一座山间小屋，宫崎骏风格，温暖的色调，细腻的线条，梦幻的氛围
+                            </div>
+                        </div>
+                        
+                        <p>常用的风格引用包括：</p>
+                        <ul>
+                            <li>艺术家风格：宫崎骏风格、梵高风格、毕加索风格等</li>
+                            <li>电影风格：赛博朋克2077、哈利波特、星球大战等</li>
+                            <li>动漫风格：日系动漫、美式卡通、赛璐璐等</li>
+                            <li>摄影风格：人像摄影、风景摄影、街头摄影等</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="camera-settings">
+                        <h3>镜头设置</h3>
+                        <p>通过指定镜头参数，可以控制图像的视角和效果：</p>
+                        
+                        <div class="example">
+                            <div class="example-title">镜头设置示例</div>
+                            <div class="example-content">
+                                一位探险家站在悬崖边，广角镜头，低角度拍摄，背景是壮丽的山脉和日落
+                            </div>
+                        </div>
+                        
+                        <p>常用的镜头设置包括：</p>
+                        <ul>
+                            <li>镜头类型：广角镜头、长焦镜头、微距镜头、鱼眼镜头等</li>
+                            <li>拍摄角度：俯视角、仰视角、平视角、侧面角度等</li>
+                            <li>景别：特写、中景、远景、全景等</li>
+                            <li>景深：浅景深、大景深、背景虚化等</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="lighting">
+                        <h3>光线与氛围</h3>
+                        <p>光线设置对图像的氛围和情感表达有重要影响：</p>
+                        
+                        <div class="example">
+                            <div class="example-title">光线设置示例</div>
+                            <div class="example-content">
+                                一位读书的少女，温暖的阳光从窗户斜射入室内，形成金色的光束，柔和的阴影，安静祥和的氛围
+                            </div>
+                        </div>
+                        
+                        <p>常用的光线设置包括：</p>
+                        <ul>
+                            <li>光源类型：自然光、人工光、烛光、霓虹灯等</li>
+                            <li>光线方向：顶光、侧光、逆光、环形光等</li>
+                            <li>光线质量：柔光、硬光、散射光、聚光等</li>
+                            <li>特殊光效：光晕、光柱、光斑、体积光等</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="templates">
+                    <h2>5. 实用提示词模板</h2>
+                    
+                    <div id="portrait">
+                        <h3>人物肖像模板</h3>
+                        <div class="code-block">
+                            一位[性别][年龄]的[人物身份]，[表情]，[姿势]，穿着[服装描述]，[发型描述]，在[环境/背景]中，[光线描述]，[风格]，[情感/氛围]，[画质提升]
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">人物肖像示例</div>
+                            <div class="example-content">
+                                一位年轻女性，微笑，手比着心形，穿着华丽的红色汉服，短发微卷，在中国古典园林中，柔和的自然光照射，超写实风格，温暖浪漫的氛围，8K高清，细节丰富
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="landscape">
+                        <h3>风景场景模板</h3>
+                        <div class="code-block">
+                            [时间]的[地点/场景]，[环境细节描述]，[天气/光线]，[色调]，[风格]，[情感/氛围]，[画质提升]
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">风景场景示例</div>
+                            <div class="example-content">
+                                黄昏时分的山间湖泊，湖面倒映着金色的夕阳，周围是郁郁葱葱的松树林，薄雾缭绕，暖色调为主，油画风格，宁静祥和的氛围，超高清画质，光影细节丰富
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="product">
+                        <h3>产品展示模板</h3>
+                        <div class="code-block">
+                            一个[产品名称]，[产品细节描述]，放置在[环境/背景]上，[光线描述]，[拍摄角度]，[风格]，[画质提升]
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">产品展示示例</div>
+                            <div class="example-content">
+                                一款现代简约风格的智能手表，金属表壳，蓝色表带，显示屏亮着，放置在大理石桌面上，专业摄影棚打光，45度俯视角，商业产品摄影风格，4K超高清，产品细节清晰可见
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="illustration">
+                        <h3>插画设计模板</h3>
+                        <div class="code-block">
+                            [主题]的插画，[场景描述]，[人物/元素描述]，[色彩风格]，[绘画技法]，[情感/氛围]，[画质提升]
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">插画设计示例</div>
+                            <div class="example-content">
+                                春天主题的儿童插画，一个小女孩在花海中奔跑，周围有蝴蝶飞舞，明亮的粉色和绿色为主，水彩画风格，欢快活泼的氛围，细节丰富，线条流畅
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="chinese-style">
+                        <h3>中国风模板</h3>
+                        <div class="code-block">
+                            [主题]的中国风[作品类型]，[传统元素描述]，[场景/人物描述]，[传统技法]，[色彩风格]，[情感/氛围]，[画质提升]
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">中国风示例</div>
+                            <div class="example-content">
+                                古风仙侠主题的中国风插画，飞檐翘角的宫殿，穿着古装的仙女立于云端，手持玉笛，水墨山水为背景，工笔与写意结合，青绿山水配色，空灵飘逸的氛围，高清细节，传统与现代融合
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="examples">
+                    <h2>6. 案例分析</h2>
+                    
+                    <div id="case1">
+                        <h3>案例1: 人物肖像</h3>
+                        <div class="example">
+                            <div class="example-title">提示词</div>
+                            <div class="example-content">
+                                一名可爱的中国少女，微笑，手比着心形捧着一块月饼。她穿着华丽的汉服，短发微卷，背景圆月，中秋节风格，超写实风格，摄影写真，超清细节，人像摄影。
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">分析</div>
+                            <ul>
+                                <li><strong>主体描述清晰</strong>：明确指定了"中国少女"，并描述了表情和动作</li>
+                                <li><strong>细节丰富</strong>：提到了服装、发型、手持物品等细节</li>
+                                <li><strong>场景设定明确</strong>：背景是圆月，与中秋节主题呼应</li>
+                                <li><strong>风格明确</strong>：指定了"超写实风格"和"摄影写真"</li>
+                                <li><strong>画质要求</strong>：要求"超清细节"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div id="case2">
+                        <h3>案例2: 风景场景</h3>
+                        <div class="example">
+                            <div class="example-title">提示词</div>
+                            <div class="example-content">
+                                双重曝光，人物侧面，山水，渐变渲染，高度融合，风格，现代和古代的人物叠加，高分辨率，8k
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">分析</div>
+                            <ul>
+                                <li><strong>特殊技法</strong>：使用"双重曝光"这一摄影技法</li>
+                                <li><strong>构图明确</strong>：指定了"人物侧面"的构图方式</li>
+                                <li><strong>元素组合</strong>：结合了人物和山水元素</li>
+                                <li><strong>风格描述</strong>：提到了"渐变渲染"和"高度融合"的处理方式</li>
+                                <li><strong>时空对比</strong>：要求"现代和古代的人物叠加"，创造时空交错的效果</li>
+                                <li><strong>画质要求</strong>：指定了"高分辨率"和"8k"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div id="case3">
+                        <h3>案例3: 产品展示</h3>
+                        <div class="example">
+                            <div class="example-title">提示词</div>
+                            <div class="example-content">
+                                一个戴墨镜的熊猫的头部的LOGO设计，黑熊头侧视，仰头，优雅高贵，极简，扁平，平面绘制，黑色，轮廓，流畅线条，表情鲜明，参考范思哲标志风格，纯色白色背景，画面里打印文字"阮小贰"
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">分析</div>
+                            <ul>
+                                <li><strong>主体明确</strong>：指定了"戴墨镜的熊猫头部"作为LOGO主体</li>
+                                <li><strong>姿态描述</strong>：指定了"侧视，仰头"的姿态</li>
+                                <li><strong>风格明确</strong>：使用了"极简，扁平，平面绘制"等风格描述</li>
+                                <li><strong>色彩简洁</strong>：指定了"黑色"和"纯色白色背景"</li>
+                                <li><strong>参考设计</strong>：提到了"参考范思哲标志风格"</li>
+                                <li><strong>文字要求</strong>：要求在画面中加入特定文字</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="video-prompts">
+                    <h2>7. 视频生成提示词</h2>
+                    
+                    <div id="video-formula">
+                        <h3>视频提示词公式</h3>
+                        <p>即梦AI不仅支持图片生成，还支持视频生成。视频提示词的基本公式如下：</p>
+                        <div class="code-block">
+                            【主体】+【环境/背景】+【运动】+【风格】+【镜头语言】
+                        </div>
+                        
+                        <p>进阶视频提示词公式：</p>
+                        <div class="code-block">
+                            【主体】+【细节描述】+【环境/背景】+【运动】+【风格】+【情感】+【镜头语言】+【构图/镜头】+【光影/色调】
+                        </div>
+                        
+                        <ul>
+                            <li><strong>主体</strong>：视频的主角，如人物、动物、物体等</li>
+                            <li><strong>细节描述</strong>：主体的具体特征和姿态</li>
+                            <li><strong>环境/背景</strong>：视频的场景和环境</li>
+                            <li><strong>运动</strong>：主体或环境中物体的动作和变化</li>
+                            <li><strong>风格</strong>：视频的艺术风格</li>
+                            <li><strong>情感</strong>：视频传达的情绪和氛围</li>
+                            <li><strong>镜头语言</strong>：镜头的移动方式，如平移、推进、拉远等</li>
+                            <li><strong>构图/镜头</strong>：视频的构图和镜头类型</li>
+                            <li><strong>光影/色调</strong>：视频的光线效果和色彩风格</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="video-examples">
+                        <h3>视频提示词示例</h3>
+                        
+                        <div class="example">
+                            <div class="example-title">文生视频示例</div>
+                            <div class="example-content">
+                                在公路上中景,镜头固定,展示一辆深色调高性能跑车的正面，流线型车身，带有橙色装饰细节，一个男人坐在车的主驾驶镜头切换.特写镜头,镜头固定，在车内，脚踩油门镜头切换近景,镜头缓缓左移，一辆深色调高性能跑车的车轮，车轮高速转动，扬起尘土镜头切换中景,镜头跟随,一辆深色调高性能跑车侧面视角，快速往前飞驰。在现代城市隧道中高速行驶，隧道内有科技感灯光，路面有橙色车道线，利用动态模糊展现速度感，光线营造科技氛围，镜头切换近景,镜头跟随,一辆深色调高性能跑车背面视角,在现代城市隧道中高速行驶，隧道内有科技感灯光，路面有橙色车道线，利用动态模糊展现速度感，光线营造科技氛围，车尾视角镜头切换中景,第一人称视角,在车内主驾驶的位置，手握方向盘，在现代城市隧道中高速行驶，隧道内有科技感灯光，路面有橙色车道线，利用动态模糊展现速度感，光线营造科技氛围，动作流畅自然，符合逻辑，保持画面稳定。
+                            </div>
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">图生视频示例</div>
+                            <div class="example-content">
+                                在酒吧里镜头中景,正面平视,镜头缓缓左移,图片中身着中式传统花纹旗袍的女性，短发微卷，拿起桌子上的酒瓶往装有冰块的高脚杯中倒红酒，身后是木质酒架，上面陈列着多瓶酒镜头特写镜头，正面平视，镜头固定，镜头1装有冰块的高脚杯里，红酒逐渐倒满，冒着酒沫，镜头中景，正面平视，镜头固定，身着中式传统花纹旗袍的女性，短发微卷，放下酒瓶，身后是木质酒架，上面陈列着多瓶酒。镜头4中景，正面平视，镜头固定，身着中式传统花纹旗袍的女性，短发微卷，拿起镜头2装有倒满红酒的高脚杯凑近嘴边，喝一口酒，身后是木质酒架，上面陈列着多瓶酒，镜头5中景，正面平视，镜头固定，身着中式传统花纹旗袍的女性，短发微卷，放下手的高脚杯，身后是木质酒架，上面陈列着多瓶酒，保持酒杯统一稳定，复古港风氛围，电影质感，动作流畅自然，符合逻辑，保持人物稳定，保持画面稳定。
+                            </div>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <p><strong>提示：</strong>在即梦AI的视频生成中，"镜头切换"是一个重要的关键词，用于指示不同场景的转换。同时，描述镜头的移动方式和视角也很重要，如"镜头固定"、"镜头缓缓左移"、"镜头跟随"等。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tools">
+                    <h2>8. 辅助工具与资源</h2>
+                    <p>以下是一些可以帮助你更好地使用即梦AI的工具和资源：</p>
+                    
+                    <div class="grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🤖</div>
+                            <div class="feature-title">DeepSeek集成</div>
+                            <p>即梦AI已经集成了DeepSeek大模型，可以直接在即梦AI的界面中使用DeepSeek生成提示词。只需在输入框中描述你的创意想法，然后打开DeepSeek功能，点击发送即可。</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🔄</div>
+                            <div class="feature-title">即梦AI反推提示词</div>
+                            <p>即梦AI提供了反推提示词功能，可以帮助你从喜欢的图片中获取提示词，实现类似效果的图像生成。这对于学习和参考他人的成功案例非常有用。</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">💡</div>
+                            <div class="feature-title">灵感向导</div>
+                            <p>即梦AI的灵感向导功能可以通过对话帮助你激发创意，当你有大致想法但缺乏具体画面时特别有用。</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🎨</div>
+                            <div class="feature-title">社区图库</div>
+                            <p>即梦AI社区图库中有大量优秀作品，可以通过"做同款"功能直接参考和学习他人的提示词和创作。</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <div class="feature-title">提示词合集</div>
+                            <p>网上有许多即梦AI的提示词合集，包含各种风格和场景的提示词示例，可以作为学习和参考的资源。</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <div class="feature-title">局部重绘功能</div>
+                            <p>即梦AI的局部重绘功能可以帮助你修改图像的特定部分，而不需要重新生成整个图像，对于微调和优化非常有用。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="faq">
+                    <h2>9. 常见问题解答</h2>
+                    
+                    <div class="card">
+                        <div class="card-title">如何让即梦AI生成更加精确的图像？</div>
+                        <p>要生成更精确的图像，可以：</p>
+                        <ul>
+                            <li>使用详细的描述，包括主体、环境、风格等多个方面</li>
+                            <li>使用权重调整，增强重要元素的影响</li>
+                            <li>添加画质提升关键词，如"高清"、"细节丰富"等</li>
+                            <li>使用负面提示词排除不想要的元素</li>
+                            <li>多次尝试和调整，找到最佳提示词组合</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">即梦AI生成的图像中文字不准确怎么办？</div>
+                        <p>即梦AI 3.0版本在文字处理方面有很大提升，但仍可能存在不准确的情况。可以尝试：</p>
+                        <ul>
+                            <li>在提示词中明确指出文字的重要性</li>
+                            <li>使用权重增加文字的影响，如"(准确文字:1.5)"</li>
+                            <li>尝试不同的字体风格和大小</li>
+                            <li>对于复杂文字，可能需要后期处理</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">如何让所有角色都集中显示在画面中间位置？</div>
+                        <p>有两种主要方法：</p>
+                        <ul>
+                            <li>在提示词中加入"中心点构图"或"角色居中群像"等关键词，直接引导AI将主体置于画面中心</li>
+                            <li>使用局部重绘功能圈选角色区域并重新生成，手动调整位置</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">即梦AI会忽略我的某些描述，怎么解决？</div>
+                        <p>如果即梦AI忽略了提示词中的某些描述，可以：</p>
+                        <ul>
+                            <li>将重要描述前置，放在提示词的前面</li>
+                            <li>增加权重，如"(正俯视视角:1.5)"</li>
+                            <li>使用更明确和具体的描述</li>
+                            <li>避免过长的提示词，可能导致后面的内容被忽略</li>
+                            <li>尝试将一个复杂提示词拆分成多个简单提示词</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">如何使用JellyCat风格生成毛绒玩具效果？</div>
+                        <p>JellyCat是英国高端毛绒玩具品牌，要生成这种风格的图像：</p>
+                        <ul>
+                            <li>使用"jellycat风格"作为提示词</li>
+                            <li>添加"毛绒绒的"描述增强质感</li>
+                            <li>对于人物，可以使用"jellycat风格，一个小女孩布偶"而不是"jellycat风格，一个小女孩"</li>
+                            <li>注意这种风格对建筑物等非玩具对象效果可能不佳</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="conclusion">
+                    <h2>10. 总结与建议</h2>
+                    
+                    <div class="success-box">
+                        <p><strong>提示词编写的核心原则：</strong></p>
+                        <ol>
+                            <li><strong>具体胜于抽象</strong>：使用具体、详细的描述，而不是模糊的概念</li>
+                            <li><strong>结构化组织</strong>：按照提示词公式组织内容，确保各个方面都有覆盖</li>
+                            <li><strong>重点突出</strong>：使用权重调整突出重要元素</li>
+                            <li><strong>持续迭代</strong>：根据生成结果不断调整和优化提示词</li>
+                            <li><strong>学习参考</strong>：学习和参考成功案例，积累经验</li>
+                        </ol>
+                    </div>
+                    
+                    <p>即梦AI作为一款强大的国产AI绘画工具，通过掌握提示词编写技巧，你可以充分发挥其潜力，创造出令人惊艳的AI艺术作品。记住，提示词编写是一门艺术，需要不断实践和探索。希望本指南能帮助你在即梦AI创作之旅中取得成功！</p>
+                    
+                    <div class="tip-box">
+                        <p><strong>最后的建议：</strong>保存你的成功提示词，建立个人提示词库，这将成为你宝贵的创作资源。同时，不要害怕尝试新的组合和表达方式，AI绘画的魅力之一就是其无限的可能性。</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>关于本指南</h3>
+                <p>本指南旨在帮助用户掌握即梦AI提示词的编写技巧，从入门到精通，创造出令人惊艳的AI艺术作品。</p>
+            </div>
+            <div class="footer-section">
+                <h3>相关资源</h3>
+                <ul>
+                    <li><a href="#" target="_blank">即梦AI官方网站</a></li>
+                    <li><a href="#" target="_blank">即梦AI社区</a></li>
+                    <li><a href="#" target="_blank">AI绘画学习资源</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>快速导航</h3>
+                <ul>
+                    <li><a href="#intro">即梦AI简介</a></li>
+                    <li><a href="#structure">提示词结构</a></li>
+                    <li><a href="#templates">实用模板</a></li>
+                    <li><a href="#examples">案例分析</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2024 即梦AI提示词完全指南 | 本指南内容仅供学习参考</p>
+        </div>
+    </footer>
+
+    <div class="scroll-top" id="scrollTop">↑</div>
+
+    <script>
+        // 移动端菜单切换
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动菜单
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // 滚动到顶部按钮
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

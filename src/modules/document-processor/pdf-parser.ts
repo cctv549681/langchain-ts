@@ -1,56 +1,83 @@
-import { Chapter, Document, DocumentMetadata } from "../../types/document";
-import * as path from "path";
-import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
-import { EPubLoader } from "@langchain/community/document_loaders/fs/epub";
+import * as fs from 'fs';
+import * as path from 'path';
+import { Document } from '../../types/document';
 
 /**
- * 解析PDF文件并提取内容
- * @param filePath PDF文件路径
- * @returns 解析后的文档对象
+ * 解析PDF/EPUB文档
  */
 export async function parseDocument(filePath: string): Promise<Document> {
-  let doc;
-  try {
-    if (path.extname(filePath) === ".pdf") {
-      // 加载PDF文件
-      const loader = new PDFLoader(filePath, {
-        splitPages: false,
-      });
-      doc = await loader.load();
-    } else if (path.extname(filePath) === ".epub") {
-      const loader = new EPubLoader(filePath, {
-        splitChapters: true,
-      });
-      doc = await loader.load();
-    }
-
-    // 创建文档元数据
-    const metadata: DocumentMetadata = {
-      fileName: path.basename(filePath),
-      createdAt: new Date(),
-      processingStatus: "pending",
-    };
-
-    // 创建并返回文档对象
-    // 注意：实际实现需要处理章节分割等逻辑
-    return {
-      id: path.basename(filePath, path.extname(filePath)),
-      title: path.basename(filePath, path.extname(filePath)),
-      metadata,
-      chapters: doc
-        .filter((chapter) => chapter.pageContent.length > 0)
-        .map((chapter, index) => ({
-          ...chapter,
-          id: `${metadata.fileName}-${index + 1}`,
-          order: index + 1,
-          metadata: {
-            ...chapter.metadata,
-            source: filePath,
-          },
-        }))
-    };
-  } catch (error: any) {
-    console.error("PDF解析失败:", error);
-    throw new Error(`PDF解析失败: ${error.message}`);
+  const fileExt = path.extname(filePath).toLowerCase();
+  
+  if (fileExt === '.pdf') {
+    return await parsePDF(filePath);
+  } else if (fileExt === '.epub') {
+    return await parseEPUB(filePath);
+  } else {
+    throw new Error(`不支持的文件格式: ${fileExt}`);
   }
 }
+
+async function parsePDF(filePath: string): Promise<Document> {
+  const pdfParse = require('pdf-parse');
+  const dataBuffer = fs.readFileSync(filePath);
+  const data = await pdfParse(dataBuffer);
+  
+  return createDocumentFromText(filePath, data.text);
+}
+
+async function parseEPUB(filePath: string): Promise<Document> {
+  const { EPub } = require('epub2');
+  const epub = await EPub.createAsync(filePath);
+  
+  let fullText = '';
+  
+  // 使用 flow 属性获取章节列表
+  for (const chapter of epub.flow) {
+    try {
+      // 使用 getChapter 方法获取章节内容
+      const chapterText = await new Promise<string>((resolve, reject) => {
+        epub.getChapter(chapter.id, (error: any, text: string) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(text);
+          }
+        });
+      });
+      
+      // 清理 HTML 标签和多余空格
+      const cleanText = chapterText.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      fullText += cleanText + '\n\n';
+    } catch (error) {
+      console.warn(`跳过章节 ${chapter.id}:`, error);
+      continue;
+    }
+  }
+  
+  return createDocumentFromText(filePath, fullText);
+}
+
+function createDocumentFromText(filePath: string, text: string): Document {
+  const chapters = text
+    .split(/\n\s*\n/)
+    .filter(chunk => chunk.trim().length > 100)
+    .map((chunk, index) => ({
+      id: `chapter-${index + 1}`,
+      pageContent: chunk.trim(),
+      metadata: { 
+        source: filePath,
+        wordCount: chunk.length
+      }
+    }));
+
+  return {
+    id: `doc-${Date.now()}`,
+    title: path.basename(filePath, path.extname(filePath)),
+    chapters,
+    metadata: {
+      fileName: path.basename(filePath),
+      createdAt: new Date(),
+      processingStatus: 'completed'
+    }
+  };
+} 
